@@ -1,0 +1,73 @@
+﻿<Window x:Class="LibraryShiryaev2isp11_17.Windows.BookListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
+        mc:Ignorable="d"
+        Title="BookListWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition Width="744*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Список книг"
+
+
+FontSize="25" Grid.Column="1" Margin="266,-1,-266,1" />
+
+        <ListView x:Name="ListBook"
+                  KeyUp="ListBook_KeyUp"
+Grid.Row="3" Grid.ColumnSpan="2">
+            <ListView.View>
+               
+                <GridView>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding BookID}"/>
+                    <GridViewColumn Header="SubjectID" Width="70" DisplayMemberBinding="{Binding SubjectID}"/>
+                    <GridViewColumn Header="Название" Width="150" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Header="Информация" Width="150" DisplayMemberBinding="{Binding Info}"/>
+                    <GridViewColumn Header="Дата публикации" Width="100" DisplayMemberBinding="{Binding DateOfPublication}"/>
+                    <GridViewColumn Header="Издание" Width="90" DisplayMemberBinding="{Binding Publisher}"/>
+                    <GridViewColumn Header="Используемость" Width="100" DisplayMemberBinding="{Binding BookInUse}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5,0,4">
+            <TextBlock Text="Поиск"
+Margin="20 0 10 0"
+FontSize="18"/>
+            <TextBox x:Name="txtSearch"
+Width="150"
+FontSize="18"
+TextChanged="txtSearch_TextChanged"/>
+            <ComboBox x:Name="cmbSort"
+Width="150"
+Margin="20 0"
+SelectionChanged="cmbSort_SelectionChanged"/>
+        </WrapPanel>
+
+        <Button Grid.Row="4"
+x:Name="btdAddBook"
+Width="100"
+Height="30"
+HorizontalAlignment="Right"
+Content="Добавить"
+FontSize="20"
+VerticalAlignment="Center"
+HorizontalContentAlignment="Center"
+Margin="0,2,10,3"
+Foreground="White"
+Background="Green"
+Click="btdAddBook_Click" Grid.Column="1"/>
+    </Grid>
+</Window>

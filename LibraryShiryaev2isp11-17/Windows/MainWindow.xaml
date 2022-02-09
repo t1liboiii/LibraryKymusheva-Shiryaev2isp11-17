@@ -1,0 +1,26 @@
+﻿<Window x:Class="LibraryShiryaev2isp11_17.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryShiryaev2isp11_17"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="blwbtn"
+                Width="150"
+                Click="blwbtn_Click"
+                Content="Список книг"
+                Height="40">
+
+        </Button>
+        <Button x:Name="CustList"
+                Width="150"
+                Height="40"
+                Content="Списко Читателей"
+                Click="CustList_Click" Margin="321,237,321,142">
+            
+        </Button>
+                
+    </Grid>
+</Window>
