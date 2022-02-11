@@ -5,6 +5,7 @@ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
 mc:Ignorable="d"
+Background="Bisque"
 WindowStartupLocation="CenterScreen"
 Title="AddClient" Height="450" Width="600">
     <Grid>
@@ -96,6 +97,7 @@ Height="25"/>
 Content="Добавить"
 VerticalAlignment="Center"
 HorizontalAlignment="Center"
+                Background="SandyBrown"
 FontSize="16"
 Grid.Row="5"
 Grid.ColumnSpan="2"

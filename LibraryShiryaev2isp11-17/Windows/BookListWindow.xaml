@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Background="Bisque"
         Title="BookListWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -66,8 +68,7 @@ FontSize="20"
 VerticalAlignment="Center"
 HorizontalContentAlignment="Center"
 Margin="0,2,10,3"
-Foreground="White"
-Background="Green"
+Background="SandyBrown"
 Click="btdAddBook_Click" Grid.Column="1"/>
     </Grid>
 </Window>

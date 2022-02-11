@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Background="Bisque"
+        
         Title="AddBook" Height="450" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -129,6 +132,7 @@ Content="Добавить"
 VerticalAlignment="Center"
 HorizontalAlignment="Center"
 FontSize="16"
+Background="SandyBrown"
 Grid.Row="7"
 Grid.ColumnSpan="2"
 Margin="10 0 0 0"

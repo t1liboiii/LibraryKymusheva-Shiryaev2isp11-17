@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
         mc:Ignorable="d"
         Title="AuthWindow" 
+        WindowStartupLocation="CenterScreen"
+        Background="Bisque"
         Height="800"
         Width="450">
     <Grid>
@@ -14,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            
         </Grid.RowDefinitions>
         <TextBlock x:Name="tbAuth"
                    Text="Авторизация"
@@ -23,13 +25,34 @@
                    >
         </TextBlock>
 
+        <TextBlock x:Name="tbLog"
+                   Text="Login:"
+            FontSize="30"
+                   Grid.Row="1"
+                   Width="150"
+                   Height="50"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top">
+            
+        </TextBlock>
+
+        <TextBlock x:Name="tbPas"
+                   Text="Password:"
+            FontSize="30"
+                   Grid.Row="2"
+                   Width="150"
+                   Height="50"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top">
+
+        </TextBlock>
         <TextBox x:Name="txtLog"
                  Text=""
                  FontSize="30"
                  Grid.Row="1"
-                 HorizontalAlignment="Center"
+                 HorizontalAlignment="Right"
                  VerticalAlignment="Top"
-                 Width="200" 
+                 Width="200" Margin="0,0,40,0" 
                 >
             
         </TextBox>
@@ -37,9 +60,9 @@
                  Text=""
                  FontSize="30"
                  Grid.Row="2"
-                 HorizontalAlignment="Center"
+                 HorizontalAlignment="Right"
                  VerticalAlignment="Top"
-                 Width="200" 
+                 Width="200" Margin="0,0,40,0" 
                 >
 
         </TextBox>
@@ -48,6 +71,7 @@
                 Content="Войти"
                 FontSize="30"
                 Grid.Row="3"
+                Background="SandyBrown"
                 Width="200"
                 Click="btnEnter_Click"
                 Height="50">
