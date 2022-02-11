@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Background="Bisque"
-        Title="UserListWindow" Height="450" Width="800">
+        Title="UserListWindow" Height="450" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -34,7 +34,7 @@ Grid.Row="3">
                     
                     <GridViewColumn Header="Телефон" Width="150" DisplayMemberBinding="{Binding Phone}"/>
                     <GridViewColumn Header="Birthday" Width="150" DisplayMemberBinding="{Binding Birthday}"/>
-                    <GridViewColumn Header="Adress" Width="250" DisplayMemberBinding="{Binding Adress}"/>
+                    <GridViewColumn Header="Adress" Width="200" DisplayMemberBinding="{Binding Adress}"/>
                 </GridView>
             </ListView.View>
         </ListView>

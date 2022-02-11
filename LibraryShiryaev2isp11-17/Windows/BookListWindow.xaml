@@ -37,7 +37,7 @@ Grid.Row="3" Grid.ColumnSpan="2">
                     <GridViewColumn Header="SubjectID" Width="70" DisplayMemberBinding="{Binding SubjectID}"/>
                     <GridViewColumn Header="Название" Width="150" DisplayMemberBinding="{Binding Title}"/>
                     <GridViewColumn Header="Информация" Width="150" DisplayMemberBinding="{Binding Info}"/>
-                    <GridViewColumn Header="Дата публикации" Width="100" DisplayMemberBinding="{Binding DateOfPublication}"/>
+                    <GridViewColumn Header="Дата публикации" Width="150" DisplayMemberBinding="{Binding DateOfPublication}"/>
                     <GridViewColumn Header="Издание" Width="90" DisplayMemberBinding="{Binding Publisher}"/>
                     <GridViewColumn Header="Используемость" Width="100" DisplayMemberBinding="{Binding BookInUse}"/>
 
