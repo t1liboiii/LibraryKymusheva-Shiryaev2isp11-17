@@ -24,6 +24,7 @@ FontSize="25"/>
 
         <ListView x:Name="ListCustomer"
                  KeyUp="ListCustomer_KeyUp"
+                  MouseDoubleClick="ListCustomer_MouseDoubleClick"
 Grid.Row="3">
             <ListView.View>
                 <GridView>
@@ -32,7 +33,7 @@ Grid.Row="3">
                     <GridViewColumn Header="Имя" Width="150" DisplayMemberBinding="{Binding FirstName}"/>
                     
                     <GridViewColumn Header="Телефон" Width="150" DisplayMemberBinding="{Binding Phone}"/>
-                    <GridViewColumn Header="dr" Width="150" DisplayMemberBinding="{Binding Birthday}"/>
+                    <GridViewColumn Header="Birthday" Width="150" DisplayMemberBinding="{Binding Birthday}"/>
                     <GridViewColumn Header="Adress" Width="250" DisplayMemberBinding="{Binding Adress}"/>
                 </GridView>
             </ListView.View>

@@ -23,7 +23,6 @@ namespace LibraryShiryaev2isp11_17.Windows
     /// </summary>
     public partial class BookListWindow : Window
     {
-
         List<Book> BookList = new List<Book>();
         List<string> listSort = new List<string>() { "По умолчанию", "По Названию", "По Изданию", "По Используемости" };
         public BookListWindow()
@@ -80,6 +79,7 @@ namespace LibraryShiryaev2isp11_17.Windows
         {
             AddBookWindow addbookListWindow = new AddBookWindow();
             addbookListWindow.Show();
+            ListBook.ItemsSource = AppData.Context.Book.ToString();
         }
 
         private void ListBook_KeyUp(object sender, KeyEventArgs e)
@@ -106,6 +106,18 @@ namespace LibraryShiryaev2isp11_17.Windows
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+        }
+
+        private void ListBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var editBook = new EF.Book();
+            if (ListBook.SelectedItem is EF.Book)
+            {
+                editBook = ListBook.SelectedItem as EF.Book;
+            }
+            AddBookWindow addbookListWindow = new AddBookWindow(editBook);
+            addbookListWindow.Show();
+            ListBook.ItemsSource = AppData.Context.Book.ToString();
         }
     }
 }

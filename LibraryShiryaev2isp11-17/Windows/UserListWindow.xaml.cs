@@ -76,6 +76,7 @@ namespace LibraryShiryaev2isp11_17.Windows
         {
             AddUserWindow adduserListWindow = new AddUserWindow();
             adduserListWindow.Show();
+            ListCustomer.ItemsSource = AppData.Context.Customer.ToString();
         }
 
         private void ListCustomer_KeyUp(object sender,System.Windows.Input.KeyEventArgs e)
@@ -102,6 +103,20 @@ namespace LibraryShiryaev2isp11_17.Windows
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+        }
+
+        private void ListCustomer_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var editCustomer = new EF.Customer();
+            if (ListCustomer.SelectedItem is EF.Customer)
+            {
+                 editCustomer = ListCustomer.SelectedItem as EF.Customer;
+            }  
+            AddUserWindow adduserListWindow = new AddUserWindow(editCustomer);
+            adduserListWindow.Show();
+            ListCustomer.ItemsSource = AppData.Context.Customer.ToString();
+
+
         }
     }
 }

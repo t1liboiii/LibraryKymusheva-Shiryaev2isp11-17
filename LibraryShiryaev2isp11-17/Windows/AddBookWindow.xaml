@@ -27,7 +27,7 @@
 
 
 
-        <TextBlock Text="Добавление Книги"
+        <TextBlock x:Name="tbTitle2" Text="Добавление Книги"
 VerticalAlignment="Center"
 HorizontalAlignment="Center"
 FontSize="25"

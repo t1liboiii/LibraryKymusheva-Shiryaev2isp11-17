@@ -28,6 +28,7 @@ FontSize="25" Grid.Column="1" Margin="266,-1,-266,1" />
 
         <ListView x:Name="ListBook"
                   KeyUp="ListBook_KeyUp"
+                  MouseDoubleClick="ListBook_MouseDoubleClick"
 Grid.Row="3" Grid.ColumnSpan="2">
             <ListView.View>
                

@@ -24,7 +24,8 @@ Title="AddClient" Height="450" Width="600">
 
         
 
-        <TextBlock Text="Добавление читателя"
+        <TextBlock x:Name="tbTitle"
+            Text="Добавление читателя"
 VerticalAlignment="Center"
 HorizontalAlignment="Center"
 FontSize="25"

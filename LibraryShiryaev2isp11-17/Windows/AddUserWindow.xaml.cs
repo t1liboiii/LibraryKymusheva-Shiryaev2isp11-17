@@ -22,29 +22,31 @@ namespace LibraryShiryaev2isp11_17.Windows
     /// </summary>
     public partial class AddUserWindow : Window
     {
+        EF.Customer editCustomer = new EF.Customer();
+        bool isEdit = true;
         public AddUserWindow()
         {
             InitializeComponent();
+            isEdit = false;
             
-            
+        }
+
+        public AddUserWindow(EF.Customer customer)
+        {
+            InitializeComponent();
+            tbTitle.Text = "Изменение данных читателя";
+            btnAdd.Content = "Изменить";
+            editCustomer = customer;
+            txtLastName.Text = editCustomer.LastName;
+            txtFirstName.Text = editCustomer.FirstName;
+            txtPhone.Text = editCustomer.Phone;
+            txtAdress.Text = editCustomer.Adress;
+            isEdit = true;
         }
 
         private void btnAdd_Click_1(object sender, RoutedEventArgs e)
         {
-            var resultClick = MessageBox.Show("Вы уверены?", "Подтвердите добавление", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (resultClick == MessageBoxResult.Yes)
-            {
-                EF.Customer newCustomer = new EF.Customer();
-                newCustomer.LastName = txtLastName.Text;
-                newCustomer.FirstName = txtFirstName.Text;
-                newCustomer.Phone = txtPhone.Text;
-                newCustomer.Adress = txtAdress.Text;
-                AppData.Context.Customer.Add(newCustomer);
-                AppData.Context.SaveChanges();
-                MessageBox.Show("ura"," user dobavlen", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
-
-            }    
+          
 
             if (string.IsNullOrWhiteSpace(txtFirstName.Text))
             {
@@ -67,7 +69,75 @@ namespace LibraryShiryaev2isp11_17.Windows
                 return;
             }
 
-            if 
+            if (txtFirstName.Text.Length > 100)
+            {
+                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (txtAdress.Text.Length > 100)
+            {
+                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (txtLastName.Text.Length > 100)
+            {
+                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (txtPhone.Text.Length > 20)
+            {
+                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
+            if(isEdit)
+            {
+                try
+                {
+                    editCustomer.LastName = txtLastName.Text;
+                    editCustomer.FirstName = txtFirstName.Text;
+                    editCustomer.Phone = txtPhone.Text;
+                    editCustomer.Adress = txtAdress.Text;
+                    AppData.Context.SaveChanges();
+                    MessageBox.Show("Успех", " Пользователь изменён", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+
+                  
+                }
+               
+            }
+            else
+            {
+                try
+                {
+
+                    var resultClick = MessageBox.Show("Вы уверены?", "Подтвердите добавление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (resultClick == MessageBoxResult.Yes)
+                    {
+                        EF.Customer newCustomer = new EF.Customer();
+                        newCustomer.LastName = txtLastName.Text;
+                        newCustomer.FirstName = txtFirstName.Text;
+                        newCustomer.Phone = txtPhone.Text;
+                        newCustomer.Adress = txtAdress.Text;
+                        AppData.Context.Customer.Add(newCustomer);
+                        AppData.Context.SaveChanges();
+                        MessageBox.Show("Успех", " Пользователь добавлен", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+           
         }
     }
 }
