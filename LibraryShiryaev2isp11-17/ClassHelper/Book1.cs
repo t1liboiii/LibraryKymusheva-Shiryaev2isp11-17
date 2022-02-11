@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryShiryaev2isp11_17.ClassHelper
 {
-    class Book
+    class Book1
     {
         public static EF.Book Context { get; } = new EF.Book();
     }

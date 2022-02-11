@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LibraryShiryaev2isp11_17.ClassHelper;
+using LibraryShiryaev2isp11_17.EF;
 using LibraryShiryaev2isp11_17.Windows;
 
 
@@ -24,23 +25,55 @@ namespace LibraryShiryaev2isp11_17.Windows
     {
 
         List<Book> BookList = new List<Book>();
-        List<string> listSort = new List<string>() { "По умолчанию", "По Фамилии", "По Имени", "По адресу" };
+        List<string> listSort = new List<string>() { "По умолчанию", "По Названию", "По Изданию", "По Используемости" };
         public BookListWindow()
         {
             InitializeComponent();
+            cmbSort.ItemsSource = listSort;
+            cmbSort.SelectedItem = 0;
             ListBook.ItemsSource = AppData.Context.Book.ToList();
+            Filter();
         }
 
 
-       
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void Filter()
         {
 
+           BookList = AppData.Context.Book.ToList();
+           BookList = BookList.Where(i => i.Title.ToLower().Contains(txtSearch.Text.ToLower()) || i.Publisher.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+
+            switch (cmbSort.SelectedIndex)
+            {
+                case 0:
+                    BookList = BookList.OrderBy(i => i.BookID).ToList();
+                    break;
+                case 1:
+                    BookList = BookList.OrderBy(i => i.Title).ToList();
+                    break;
+                case 2:
+                    BookList = BookList.OrderBy(i => i.Publisher).ToList();
+                    break;
+                case 3:
+                    BookList = BookList.OrderBy(i => i.Info).ToList();
+                    break;
+                default:
+                    BookList = BookList.OrderBy(i => i.BookID).ToList();
+                    break;
+            }
+
+            ListBook.ItemsSource = BookList;
+
+        }
+
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
         }
 
         private void cmbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Filter();
         }
 
         private void btdAddBook_Click(object sender, RoutedEventArgs e)

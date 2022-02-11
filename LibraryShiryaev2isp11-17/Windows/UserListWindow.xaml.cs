@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LibraryShiryaev2isp11_17.EF;
 using LibraryShiryaev2isp11_17.ClassHelper;
 using LibraryShiryaev2isp11_17.Windows;
 
@@ -22,33 +23,53 @@ namespace LibraryShiryaev2isp11_17.Windows
     /// </summary>
     public partial class UserListWindow : Window
     {
-        List<User> userList = new List<User>();
+        List<Customer> userList = new List<Customer>();
         List<string> listSort = new List<string>() { "По умолчанию", "По Фамилии", "По Имени", "По адресу" };
         public UserListWindow()
         {
             InitializeComponent();
             cmbSort.ItemsSource = listSort;
-            cmbSort.SelectedIndex = 0;
+            cmbSort.SelectedItem = 0;
             ListCustomer.ItemsSource = AppData.Context.Customer.ToList();
-
-
             Filter();
         }
 
 
         private void Filter()
         {
-            
+            userList = AppData.Context.Customer.ToList();
+            userList = userList.Where(i => i.LastName.ToLower().Contains(txtSearch.Text.ToLower()) || i.FirstName.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+
+            switch (cmbSort.SelectedIndex)
+            {
+                case 0: userList = userList.OrderBy(i => i.CustID).ToList();
+                    break;
+                case 1:
+                    userList = userList.OrderBy(i => i.LastName).ToList();
+                    break;
+                case 2:
+                    userList = userList.OrderBy(i => i.FirstName).ToList();
+                    break;
+                case 3:
+                    userList = userList.OrderBy(i => i.Adress).ToList();
+                    break;
+                default:
+                    userList = userList.OrderBy(i => i.CustID).ToList();
+                    break;
+            }
+
+
+            ListCustomer.ItemsSource = userList;
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Filter();
         }
 
         private void cmbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Filter();
         }
 
         private void btdAddClient_Click(object sender, RoutedEventArgs e)
