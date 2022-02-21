@@ -1,7 +1,7 @@
 # LibraryShiryaev2isp11-17
 # Описание проекта 
-<h1 align "center"> При запуске проекта мы попадаем на окно авторизации
-![image](https://user-images.githubusercontent.com/82766372/154956527-4cd576d4-2432-4a39-b82e-4d8199ae27df.png)<h1>
+<h1 align "center"> При запуске проекта мы попадаем на окно авторизации<h1>
+![image](https://user-images.githubusercontent.com/82766372/154956527-4cd576d4-2432-4a39-b82e-4d8199ae27df.png)
 <h1 align "center"> После авторизации мы попадаем на главную страницу
 ![image](https://user-images.githubusercontent.com/82766372/154958414-396a0f5f-0df2-414d-b5be-cac62d8537f5.png)
  На главной странице есть 2 кнопки которые дают возможность перейти на страницу списка читателей и страницу списка книг<h1>
@@ -18,8 +18,4 @@
 ![image](https://user-images.githubusercontent.com/82766372/154964057-f7f1f77d-8773-4ebe-8cd8-9d7d71fc5c68.png)
 ![image](https://user-images.githubusercontent.com/82766372/154964288-6862102d-88dc-4b89-8cf6-2ae32932e35e.png)
 ![image](https://user-images.githubusercontent.com/82766372/154964077-c5bff8d0-28dc-49dc-ac65-5a273a52883e.png)<h1>
-
- 
- 
-![image](https://user-images.githubusercontent.com/82766372/154965688-7640f89b-5e5b-4ad2-90d1-f7f99f0b349a.png)
 
