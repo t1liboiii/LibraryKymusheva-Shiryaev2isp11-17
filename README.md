@@ -10,7 +10,9 @@
 
  На главной странице есть 2 кнопки которые дают возможность перейти на страницу списка читателей и страницу списка книг<h1>
 
-<h1 align "center">Список книг:![image](https://user-images.githubusercontent.com/82766372/154962233-6c6b7add-f13c-467b-bc54-8753a130ec1b.png)
+<h1 align "center">Список книг:
+
+![image](https://user-images.githubusercontent.com/82766372/154962233-6c6b7add-f13c-467b-bc54-8753a130ec1b.png)
 
 Список читателей: ![image](https://user-images.githubusercontent.com/82766372/154962314-fc2a0104-6135-4188-b1f9-9f30e4af26b2.png)
 
