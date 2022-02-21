@@ -16,6 +16,7 @@
 ![image](https://user-images.githubusercontent.com/82766372/154963661-1519d8f6-102c-46c2-ac8d-0317e56efc45.png)<h1>
 <h1 align "center"> В свою очередь удаление так же присутствует, оно срабатывает через нажатие кнопки del/backspace
 ![image](https://user-images.githubusercontent.com/82766372/154964057-f7f1f77d-8773-4ebe-8cd8-9d7d71fc5c68.png)
+![image](https://user-images.githubusercontent.com/82766372/154964288-6862102d-88dc-4b89-8cf6-2ae32932e35e.png)
 ![image](https://user-images.githubusercontent.com/82766372/154964077-c5bff8d0-28dc-49dc-ac65-5a273a52883e.png)<h1>
 
  
