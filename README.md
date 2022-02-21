@@ -6,7 +6,7 @@
 ![image](https://user-images.githubusercontent.com/82766372/154958414-396a0f5f-0df2-414d-b5be-cac62d8537f5.png)
  На главной странице есть 2 кнопки которые дают возможность перейти на страницу списка читателей и страницу списка книг<h1>
 <h1 align "center">Список книг:![image](https://user-images.githubusercontent.com/82766372/154962233-6c6b7add-f13c-467b-bc54-8753a130ec1b.png)
-Список читателей: ![image](https://user-images.githubusercontent.com/82766372/154961429-c0b5afad-9ec9-40d7-8a3a-bf302befad8f.png)
+Список читателей: ![image](https://user-images.githubusercontent.com/82766372/154962314-fc2a0104-6135-4188-b1f9-9f30e4af26b2.png)
 На этих страницах присутствует фильтр имён/названий, и сортировка по фамилии,имени,адресу/названию,изданию,используемости.
 
 <h1>
