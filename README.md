@@ -5,7 +5,7 @@
 <h1 align "center"> После авторизации мы попадаем на главную страницу
 ![image](https://user-images.githubusercontent.com/82766372/154958414-396a0f5f-0df2-414d-b5be-cac62d8537f5.png)
  На главной странице есть 2 кнопки которые дают возможность перейти на страницу списка читателей и страницу списка книг<h1>
-<h1 align "center">Список книг:![image](https://user-images.githubusercontent.com/82766372/154961348-484c62d7-e0b3-41f4-a5c2-02c5b2a24210.png)
+<h1 align "center">Список книг:![image](https://user-images.githubusercontent.com/82766372/154962233-6c6b7add-f13c-467b-bc54-8753a130ec1b.png)
 Список читателей: ![image](https://user-images.githubusercontent.com/82766372/154961429-c0b5afad-9ec9-40d7-8a3a-bf302befad8f.png)
 На этих страницах присутствует фильтр имён/названий, и сортировка по фамилии,имени,адресу/названию,изданию,используемости.
 
