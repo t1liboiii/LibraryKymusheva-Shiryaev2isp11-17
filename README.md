@@ -9,7 +9,7 @@
 Список читателей: ![image](https://user-images.githubusercontent.com/82766372/154962314-fc2a0104-6135-4188-b1f9-9f30e4af26b2.png)
 На этих страницах присутствует фильтр имён/названий, и сортировка по фамилии,имени,адресу/названию,изданию,используемости.<h1>
  <h1 align "center"> Так же на этих страницах присутсвуют кнопки, которые позволяют добавить читателя/книгу
-![image](https://user-images.githubusercontent.com/82766372/154962688-b0a8ba4d-a880-4aa0-8a97-99ecb6dfdb09.png)
+<h1>![image](https://user-images.githubusercontent.com/82766372/154962688-b0a8ba4d-a880-4aa0-8a97-99ecb6dfdb09.png)<h1>
 
 
   
