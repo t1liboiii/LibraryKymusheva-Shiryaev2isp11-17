@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4e8a598974014278a4a3d834166b3a66" Name="Diagram1" ZoomLevel="89">
-        <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.AuthBook" Width="1.5" PointX="5" PointY="5" />
+        <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.AuthBook" Width="1.5" PointX="5" PointY="7.375" />
         <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.Author" Width="1.5" PointX="2.75" PointY="5.875" />
         <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.Book" Width="1.5" PointX="0.75" PointY="1" />
         <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.BookInUse" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.Customer" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.Employe" Width="1.5" PointX="8.125" PointY="3.625" />
-        <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.Subject" Width="1.5" PointX="5" PointY="7.625" />
+        <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.Customer" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.Employe" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.Subject" Width="1.5" PointX="5" PointY="5" />
         <EntityTypeShape EntityType="LibraryShiryaev2ISP1117Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
         <AssociationConnector Association="LibraryShiryaev2ISP1117Model.FK_AuthBook_Author" />
         <AssociationConnector Association="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book" />

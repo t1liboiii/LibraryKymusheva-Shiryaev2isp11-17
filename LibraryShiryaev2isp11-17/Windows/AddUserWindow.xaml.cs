@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LibraryShiryaev2isp11_17.Windows;
 using LibraryShiryaev2isp11_17.ClassHelper;
+using Microsoft.Win32;
+using System.IO;
 
 
 namespace LibraryShiryaev2isp11_17.Windows
@@ -24,6 +26,7 @@ namespace LibraryShiryaev2isp11_17.Windows
     {
         EF.Customer editCustomer = new EF.Customer();
         bool isEdit = true;
+        string pathPhoto = null; 
         public AddUserWindow()
         {
             InitializeComponent();
@@ -34,6 +37,20 @@ namespace LibraryShiryaev2isp11_17.Windows
         public AddUserWindow(EF.Customer customer)
         {
             InitializeComponent();
+            if (customer.Image != null)
+            { 
+                using (MemoryStream stream = new MemoryStream(customer.Image))
+                {
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    bitmapImage.StreamSource = stream;
+                    bitmapImage.EndInit();
+                    imgUser.Source = bitmapImage;
+                }
+            }
+
             tbTitle.Text = "Изменение данных читателя";
             btnAdd.Content = "Изменить";
             editCustomer = customer;
@@ -42,6 +59,8 @@ namespace LibraryShiryaev2isp11_17.Windows
             txtPhone.Text = editCustomer.Phone;
             txtAdress.Text = editCustomer.Adress;
             isEdit = true;
+            
+
         }
 
         private void btnAdd_Click_1(object sender, RoutedEventArgs e)
@@ -102,6 +121,10 @@ namespace LibraryShiryaev2isp11_17.Windows
                     AppData.Context.SaveChanges();
                     MessageBox.Show("Успех", " Пользователь изменён", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
+                    if (pathPhoto != null)
+                    {
+                        editCustomer.Image = File.ReadAllBytes(pathPhoto);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -125,10 +148,16 @@ namespace LibraryShiryaev2isp11_17.Windows
                         newCustomer.FirstName = txtFirstName.Text;
                         newCustomer.Phone = txtPhone.Text;
                         newCustomer.Adress = txtAdress.Text;
+                        if (pathPhoto != null)
+                        {
+                            newCustomer.Image = File.ReadAllBytes(pathPhoto);
+                        }
                         AppData.Context.Customer.Add(newCustomer);
+                       
                         AppData.Context.SaveChanges();
                         MessageBox.Show("Успех", " Пользователь добавлен", MessageBoxButton.OK, MessageBoxImage.Information);
                         this.Close();
+
 
                     }
                 }
@@ -138,6 +167,17 @@ namespace LibraryShiryaev2isp11_17.Windows
                 }
             }
            
+        }
+
+        private void btnChoosePhoto_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                imgUser.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+
+                pathPhoto = openFileDialog.FileName;
+            }
         }
     }
 }

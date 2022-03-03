@@ -46,6 +46,7 @@
           <Property Name="NumberOfRacks" Type="int" Nullable="false" />
           <Property Name="NumberOfBooks" Type="int" Nullable="false" />
           <Property Name="BookInUse" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="BookInUse">
           <Key>
@@ -69,6 +70,8 @@
           <Property Name="Phone" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
@@ -305,7 +308,7 @@
             <End Role="Author" EntitySet="Author" />
             <End Role="Subject" EntitySet="Subject" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -351,6 +354,7 @@
           <Property Name="NumberOfRacks" Type="Int32" Nullable="false" />
           <Property Name="NumberOfBooks" Type="Int32" Nullable="false" />
           <Property Name="BookInUse" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="BookInUse1" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book" FromRole="Book" ToRole="BookInUse" />
         </EntityType>
         <EntityType Name="BookInUse">
@@ -378,6 +382,8 @@
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="BookInUse" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer" FromRole="Customer" ToRole="BookInUse" />
         </EntityType>
         <EntityType Name="Employe">
@@ -463,7 +469,7 @@
           <End Type="LibraryShiryaev2ISP1117Model.Author" Role="Author" Multiplicity="*" />
           <End Type="LibraryShiryaev2ISP1117Model.Subject" Role="Subject" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -516,6 +522,7 @@
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="BookInUse" ColumnName="BookInUse" />
                 <ScalarProperty Name="NumberOfBooks" ColumnName="NumberOfBooks" />
                 <ScalarProperty Name="NumberOfRacks" ColumnName="NumberOfRacks" />
@@ -543,6 +550,8 @@
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
@@ -593,7 +602,7 @@
               <ScalarProperty Name="ID" ColumnName="AuthorID" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

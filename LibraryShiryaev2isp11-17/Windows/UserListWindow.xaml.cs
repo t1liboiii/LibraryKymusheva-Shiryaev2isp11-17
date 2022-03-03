@@ -42,7 +42,8 @@ namespace LibraryShiryaev2isp11_17.Windows
 
             switch (cmbSort.SelectedIndex)
             {
-                case 0: userList = userList.OrderBy(i => i.CustID).ToList();
+                case 0:
+                    userList = userList.OrderBy(i => i.CustID).ToList();
                     break;
                 case 1:
                     userList = userList.OrderBy(i => i.LastName).ToList();
@@ -52,6 +53,9 @@ namespace LibraryShiryaev2isp11_17.Windows
                     break;
                 case 3:
                     userList = userList.OrderBy(i => i.Adress).ToList();
+                    break;
+                case 4:
+                    userList = userList.OrderBy(i => i.IsDeleted).ToList();
                     break;
                 default:
                     userList = userList.OrderBy(i => i.CustID).ToList();
@@ -79,7 +83,7 @@ namespace LibraryShiryaev2isp11_17.Windows
             ListCustomer.ItemsSource = AppData.Context.Customer.ToString();
         }
 
-        private void ListCustomer_KeyUp(object sender,System.Windows.Input.KeyEventArgs e)
+        private void ListCustomer_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Delete || e.Key == System.Windows.Input.Key.Back)
             {
@@ -95,9 +99,9 @@ namespace LibraryShiryaev2isp11_17.Windows
                         MessageBox.Show("Успех", "Пользователь успешно удалён", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     }
-                    
+
                 }
-                
+
                 catch (System.Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
@@ -110,13 +114,15 @@ namespace LibraryShiryaev2isp11_17.Windows
             var editCustomer = new EF.Customer();
             if (ListCustomer.SelectedItem is EF.Customer)
             {
-                 editCustomer = ListCustomer.SelectedItem as EF.Customer;
-            }  
+                editCustomer = ListCustomer.SelectedItem as EF.Customer;
+            }
             AddUserWindow adduserListWindow = new AddUserWindow(editCustomer);
             adduserListWindow.Show();
             ListCustomer.ItemsSource = AppData.Context.Customer.ToString();
 
 
         }
+
+      
     }
 }
