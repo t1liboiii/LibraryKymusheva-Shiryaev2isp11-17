@@ -40,4 +40,7 @@
  <h1 align "center"> Реализована возможность добавления фото для пользователя<h1>
  
 ![image](https://user-images.githubusercontent.com/82766372/157621593-d96cd1bb-ca91-440b-9861-36937212fde2.png)
+  
+![image](https://user-images.githubusercontent.com/82766372/157627187-97fcfd11-a8d6-483d-9897-8ffeb4bf28c4.png)
+
 
