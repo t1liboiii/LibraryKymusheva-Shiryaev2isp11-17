@@ -43,6 +43,9 @@
   
 ![image](https://user-images.githubusercontent.com/82766372/157627187-97fcfd11-a8d6-483d-9897-8ffeb4bf28c4.png)
   
-  <h1 align "center"> Добавлен класс расчитывающий задолженность клиента за книжку>h1
+  <h1 align "center"> Добавлен класс расчитывающий задолженность клиента за книжку>
+   
+   ![image](https://user-images.githubusercontent.com/82766372/158781792-13be6752-9a49-4412-b86b-eccb9a70d3a4.png)
+
 
 
