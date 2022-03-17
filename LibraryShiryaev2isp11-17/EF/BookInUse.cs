@@ -20,6 +20,7 @@ namespace LibraryShiryaev2isp11_17.EF
         public System.DateTime DateOfIssue { get; set; }
         public Nullable<int> EmployeID { get; set; }
         public System.DateTime DateReturn { get; set; }
+        public Nullable<bool> IsPaidFor { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Customer Customer { get; set; }

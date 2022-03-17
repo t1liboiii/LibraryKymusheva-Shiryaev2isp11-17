@@ -12,29 +12,25 @@ namespace LibraryShiryaev2isp11_17.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Issue
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public Issue()
         {
-            this.BookInUse = new HashSet<BookInUse>();
-            this.Issue1 = new HashSet<Issue>();
+            this.Customer = new HashSet<Customer>();
         }
     
-        public int CustID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string Patronymic { get; set; }
-        public string Phone { get; set; }
-        public System.DateTime Birthday { get; set; }
-        public string Adress { get; set; }
-        public byte[] Image { get; set; }
-        public Nullable<int> IssueID { get; set; }
+        public int id { get; set; }
+        public Nullable<decimal> Cost { get; set; }
+        public Nullable<int> BookID { get; set; }
+        public Nullable<System.DateTime> DateReturn { get; set; }
+        public Nullable<System.DateTime> DateTrunIn { get; set; }
+        public Nullable<int> ClientID { get; set; }
+        public Nullable<bool> IsPadiFor { get; set; }
     
+        public virtual Book Book { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BookInUse> BookInUse { get; set; }
-        public virtual Issue Issue { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Issue> Issue1 { get; set; }
+        public virtual ICollection<Customer> Customer { get; set; }
+        public virtual Customer Customer1 { get; set; }
     }
 }

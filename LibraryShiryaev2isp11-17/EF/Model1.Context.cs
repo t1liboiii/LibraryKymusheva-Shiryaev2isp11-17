@@ -33,6 +33,7 @@ namespace LibraryShiryaev2isp11_17.EF
         public virtual DbSet<BookInUse> BookInUse { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Employe> Employe { get; set; }
+        public virtual DbSet<Issue> Issue { get; set; }
         public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     

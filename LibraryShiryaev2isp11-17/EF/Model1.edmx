@@ -46,7 +46,7 @@
           <Property Name="NumberOfRacks" Type="int" Nullable="false" />
           <Property Name="NumberOfBooks" Type="int" Nullable="false" />
           <Property Name="BookInUse" Type="bit" Nullable="false" />
-          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="BookInUse">
           <Key>
@@ -58,6 +58,7 @@
           <Property Name="DateOfIssue" Type="date" Nullable="false" />
           <Property Name="EmployeID" Type="int" />
           <Property Name="DateReturn" Type="date" Nullable="false" />
+          <Property Name="IsPaidFor" Type="bit" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -70,8 +71,8 @@
           <Property Name="Phone" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="IssueID" Type="int" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
@@ -84,6 +85,18 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="BookID" Type="int" />
+          <Property Name="DateReturn" Type="datetime" />
+          <Property Name="DateTrunIn" Type="datetime" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="IsPadiFor" Type="bit" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -174,6 +187,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Customer_Issue">
+          <End Role="Issue" Type="Self.Issue" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Issue_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Issue_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustID" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -212,6 +261,7 @@
           <EntitySet Name="BookInUse" EntityType="Self.BookInUse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Issue" EntityType="Self.Issue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuthSubj" EntityType="Self.AuthSubj" store:Type="Tables" store:Schema="dbo">
@@ -243,6 +293,18 @@
           <AssociationSet Name="FK_BookInUse_Employe" Association="Self.FK_BookInUse_Employe">
             <End Role="Employe" EntitySet="Employe" />
             <End Role="BookInUse" EntitySet="BookInUse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Issue" Association="Self.FK_Customer_Issue">
+            <End Role="Issue" EntitySet="Issue" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Issue_Book" Association="Self.FK_Issue_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Issue" EntitySet="Issue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Issue_Customer" Association="Self.FK_Issue_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Issue" EntitySet="Issue" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -286,6 +348,7 @@
           <EntitySet Name="BookInUse" EntityType="LibraryShiryaev2ISP1117Model.BookInUse" />
           <EntitySet Name="Customer" EntityType="LibraryShiryaev2ISP1117Model.Customer" />
           <EntitySet Name="Employe" EntityType="LibraryShiryaev2ISP1117Model.Employe" />
+          <EntitySet Name="Issue" EntityType="LibraryShiryaev2ISP1117Model.Issue" />
           <EntitySet Name="Subject" EntityType="LibraryShiryaev2ISP1117Model.Subject" />
           <EntitySet Name="sysdiagrams" EntityType="LibraryShiryaev2ISP1117Model.sysdiagrams" />
           <AssociationSet Name="FK_AuthBook_Author" Association="LibraryShiryaev2ISP1117Model.FK_AuthBook_Author">
@@ -296,6 +359,10 @@
             <End Role="Book" EntitySet="Book" />
             <End Role="BookInUse" EntitySet="BookInUse" />
           </AssociationSet>
+          <AssociationSet Name="FK_Issue_Book" Association="LibraryShiryaev2ISP1117Model.FK_Issue_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Issue" EntitySet="Issue" />
+          </AssociationSet>
           <AssociationSet Name="FK_BookInUse_Customer" Association="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="BookInUse" EntitySet="BookInUse" />
@@ -303,6 +370,14 @@
           <AssociationSet Name="FK_BookInUse_Employe" Association="LibraryShiryaev2ISP1117Model.FK_BookInUse_Employe">
             <End Role="Employe" EntitySet="Employe" />
             <End Role="BookInUse" EntitySet="BookInUse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Issue" Association="LibraryShiryaev2ISP1117Model.FK_Customer_Issue">
+            <End Role="Issue" EntitySet="Issue" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Issue_Customer" Association="LibraryShiryaev2ISP1117Model.FK_Issue_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Issue" EntitySet="Issue" />
           </AssociationSet>
           <AssociationSet Name="AuthSubj" Association="LibraryShiryaev2ISP1117Model.AuthSubj">
             <End Role="Author" EntitySet="Author" />
@@ -354,8 +429,9 @@
           <Property Name="NumberOfRacks" Type="Int32" Nullable="false" />
           <Property Name="NumberOfBooks" Type="Int32" Nullable="false" />
           <Property Name="BookInUse" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
           <NavigationProperty Name="BookInUse1" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book" FromRole="Book" ToRole="BookInUse" />
+          <NavigationProperty Name="Issue" Relationship="LibraryShiryaev2ISP1117Model.FK_Issue_Book" FromRole="Book" ToRole="Issue" />
         </EntityType>
         <EntityType Name="BookInUse">
           <Key>
@@ -367,6 +443,7 @@
           <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EmployeID" Type="Int32" />
           <Property Name="DateReturn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsPaidFor" Type="Boolean" />
           <NavigationProperty Name="Book" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book" FromRole="BookInUse" ToRole="Book" />
           <NavigationProperty Name="Customer" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer" FromRole="BookInUse" ToRole="Customer" />
           <NavigationProperty Name="Employe" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Employe" FromRole="BookInUse" ToRole="Employe" />
@@ -382,9 +459,11 @@
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IssueID" Type="Int32" />
           <NavigationProperty Name="BookInUse" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer" FromRole="Customer" ToRole="BookInUse" />
+          <NavigationProperty Name="Issue" Relationship="LibraryShiryaev2ISP1117Model.FK_Customer_Issue" FromRole="Customer" ToRole="Issue" />
+          <NavigationProperty Name="Issue1" Relationship="LibraryShiryaev2ISP1117Model.FK_Issue_Customer" FromRole="Customer" ToRole="Issue" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
@@ -398,6 +477,21 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BookInUse" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Employe" FromRole="Employe" ToRole="BookInUse" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="BookID" Type="Int32" />
+          <Property Name="DateReturn" Type="DateTime" Precision="3" />
+          <Property Name="DateTrunIn" Type="DateTime" Precision="3" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="IsPadiFor" Type="Boolean" />
+          <NavigationProperty Name="Book" Relationship="LibraryShiryaev2ISP1117Model.FK_Issue_Book" FromRole="Issue" ToRole="Book" />
+          <NavigationProperty Name="Customer" Relationship="LibraryShiryaev2ISP1117Model.FK_Customer_Issue" FromRole="Issue" ToRole="Customer" />
+          <NavigationProperty Name="Customer1" Relationship="LibraryShiryaev2ISP1117Model.FK_Issue_Customer" FromRole="Issue" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -441,6 +535,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Issue_Book">
+          <End Type="LibraryShiryaev2ISP1117Model.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="LibraryShiryaev2ISP1117Model.Issue" Role="Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BookInUse_Customer">
           <End Type="LibraryShiryaev2ISP1117Model.Customer" Role="Customer" Multiplicity="1" />
           <End Type="LibraryShiryaev2ISP1117Model.BookInUse" Role="BookInUse" Multiplicity="*" />
@@ -462,6 +568,30 @@
             </Principal>
             <Dependent Role="BookInUse">
               <PropertyRef Name="EmployeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Issue">
+          <End Type="LibraryShiryaev2ISP1117Model.Issue" Role="Issue" Multiplicity="0..1" />
+          <End Type="LibraryShiryaev2ISP1117Model.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Issue_Customer">
+          <End Type="LibraryShiryaev2ISP1117Model.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="LibraryShiryaev2ISP1117Model.Issue" Role="Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustID" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="ClientID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -522,7 +652,7 @@
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Book">
               <MappingFragment StoreEntitySet="Book">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="BookInUse" ColumnName="BookInUse" />
                 <ScalarProperty Name="NumberOfBooks" ColumnName="NumberOfBooks" />
                 <ScalarProperty Name="NumberOfRacks" ColumnName="NumberOfRacks" />
@@ -538,6 +668,7 @@
           <EntitySetMapping Name="BookInUse">
             <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.BookInUse">
               <MappingFragment StoreEntitySet="BookInUse">
+                <ScalarProperty Name="IsPaidFor" ColumnName="IsPaidFor" />
                 <ScalarProperty Name="DateReturn" ColumnName="DateReturn" />
                 <ScalarProperty Name="EmployeID" ColumnName="EmployeID" />
                 <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
@@ -550,8 +681,8 @@
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
@@ -572,6 +703,19 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Issue">
+            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Issue">
+              <MappingFragment StoreEntitySet="Issue">
+                <ScalarProperty Name="IsPadiFor" ColumnName="IsPadiFor" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="DateTrunIn" ColumnName="DateTrunIn" />
+                <ScalarProperty Name="DateReturn" ColumnName="DateReturn" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

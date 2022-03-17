@@ -29,7 +29,7 @@ FontSize="25"/>
 Grid.Row="3">
             <!--<ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding CustID}"/>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding ID}"/>
                     <GridViewColumn Header="Фамилия" Width="150" DisplayMemberBinding="{Binding LastName}"/>
                     <GridViewColumn Header="Имя" Width="150" DisplayMemberBinding="{Binding FirstName}"/>
                     

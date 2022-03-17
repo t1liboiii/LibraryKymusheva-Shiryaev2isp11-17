@@ -18,6 +18,7 @@ namespace LibraryShiryaev2isp11_17.EF
         public Book()
         {
             this.BookInUse1 = new HashSet<BookInUse>();
+            this.Issue = new HashSet<Issue>();
         }
     
         public int BookID { get; set; }
@@ -29,9 +30,11 @@ namespace LibraryShiryaev2isp11_17.EF
         public int NumberOfRacks { get; set; }
         public int NumberOfBooks { get; set; }
         public bool BookInUse { get; set; }
-        public bool IsDeleted { get; set; }
+        public Nullable<decimal> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookInUse> BookInUse1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Issue> Issue { get; set; }
     }
 }

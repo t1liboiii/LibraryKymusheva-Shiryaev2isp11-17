@@ -54,9 +54,7 @@ namespace LibraryShiryaev2isp11_17.Windows
                 case 3:
                     userList = userList.OrderBy(i => i.Adress).ToList();
                     break;
-                case 4:
-                    userList = userList.OrderBy(i => i.IsDeleted).ToList();
-                    break;
+                
                 default:
                     userList = userList.OrderBy(i => i.CustID).ToList();
                     break;
@@ -123,6 +121,6 @@ namespace LibraryShiryaev2isp11_17.Windows
 
         }
 
-      
+
     }
 }
