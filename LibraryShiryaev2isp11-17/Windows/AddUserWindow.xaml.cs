@@ -179,5 +179,6 @@ namespace LibraryShiryaev2isp11_17.Windows
                 pathPhoto = openFileDialog.FileName;
             }
         }
+        
     }
 }

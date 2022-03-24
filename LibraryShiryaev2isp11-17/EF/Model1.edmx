@@ -47,6 +47,8 @@
           <Property Name="NumberOfBooks" Type="int" Nullable="false" />
           <Property Name="BookInUse" Type="bit" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ShortInfo" Type="nvarchar(max)" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="BookInUse">
           <Key>
@@ -430,6 +432,8 @@
           <Property Name="NumberOfBooks" Type="Int32" Nullable="false" />
           <Property Name="BookInUse" Type="Boolean" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ShortInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="BookInUse1" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book" FromRole="Book" ToRole="BookInUse" />
           <NavigationProperty Name="Issue" Relationship="LibraryShiryaev2ISP1117Model.FK_Issue_Book" FromRole="Book" ToRole="Issue" />
         </EntityType>
@@ -652,6 +656,8 @@
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ShortInfo" ColumnName="ShortInfo" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="BookInUse" ColumnName="BookInUse" />
                 <ScalarProperty Name="NumberOfBooks" ColumnName="NumberOfBooks" />

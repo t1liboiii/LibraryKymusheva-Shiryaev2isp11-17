@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LibraryShiryaev2isp11_17.Windows;
 using LibraryShiryaev2isp11_17.ClassHelper;
+using Microsoft.Win32;
+using System.IO;
 
 
 namespace LibraryShiryaev2isp11_17.Windows
@@ -24,6 +26,7 @@ namespace LibraryShiryaev2isp11_17.Windows
     {
         EF.Book editBook = new EF.Book();
         bool isEdit = true;
+        string pathPhoto2 = null;
         public AddBookWindow()
         {
             InitializeComponent();
@@ -44,6 +47,19 @@ namespace LibraryShiryaev2isp11_17.Windows
             txtInuse.Text = editBook.BookInUse.ToString();
             txtSubject.Text = editBook.SubjectID.ToString();
             isEdit = true;
+            if (book.Image != null)
+            {
+                using (MemoryStream stream = new MemoryStream(book.Image))
+                {
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    bitmapImage.StreamSource = stream;
+                    bitmapImage.EndInit();
+                    imgBook.Source = bitmapImage;
+                }
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -158,6 +174,16 @@ namespace LibraryShiryaev2isp11_17.Windows
             }
 
             
+        }
+        private void btnChoosePhoto_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                imgBook.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+
+                pathPhoto2 = openFileDialog.FileName;
+            }
         }
     }
 }

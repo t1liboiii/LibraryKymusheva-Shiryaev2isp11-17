@@ -31,6 +31,8 @@ namespace LibraryShiryaev2isp11_17.EF
         public int NumberOfBooks { get; set; }
         public bool BookInUse { get; set; }
         public Nullable<decimal> Price { get; set; }
+        public string ShortInfo { get; set; }
+        public byte[] Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookInUse> BookInUse1 { get; set; }

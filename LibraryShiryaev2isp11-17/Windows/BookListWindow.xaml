@@ -29,8 +29,9 @@ FontSize="25" Grid.Column="1" Margin="266,-1,-266,1" />
         <ListView x:Name="ListBook"
                   KeyUp="ListBook_KeyUp"
                   MouseDoubleClick="ListBook_MouseDoubleClick"
+                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 Grid.Row="3" Grid.ColumnSpan="2">
-            <ListView.View>
+            <!--ListView.View>
                
                 <GridView>
                     <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding BookID}"/>
@@ -43,6 +44,96 @@ Grid.Row="3" Grid.ColumnSpan="2">
 
                 </GridView>
             </ListView.View>
+        </ListView-->
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+                    <Border Background="Aqua"
+                            Height="100"
+                            Width="450"
+                            Margin="10"
+                            BorderThickness="1"
+                            CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <Image x:Name="photoBook"
+                       Margin="5" 
+                       Grid.RowSpan="3">
+                                <Image.Source>
+                                    <Binding Path ="Images">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>
+                                                /LibraryShiryaev2isp11-17;component/Images/booki4.jpg
+                                            </ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <TextBlock Text="Название"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0 0 10 0"/>
+                            
+
+                            <TextBlock Text="Информация"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0 0 10 0"/>
+
+                            <TextBlock Text="Издание"
+                           Grid.Column="1"
+                           Grid.Row="2"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0 0 10 0"/>
+
+                            <TextBlock Text="{Binding Path=Title}"
+                           Grid.Column="2"
+                           Grid.Row="0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="10 8 0 8"/>
+
+                            <TextBlock Text="{Binding Path=ShortInfo}"
+                           Grid.Column="2"
+                           Grid.Row="1"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="10 11 -150 8"/>
+
+                            <TextBlock Text="{Binding Path=Publisher}"
+                           Grid.Column="2"
+                           Grid.Row="2"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                          Margin="0 -30 0 -12"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
         </ListView>
 
         <WrapPanel Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5,0,4">

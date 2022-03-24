@@ -16,6 +16,7 @@ using LibraryShiryaev2isp11_17.ClassHelper;
 using LibraryShiryaev2isp11_17.Windows;
 
 
+
 namespace LibraryShiryaev2isp11_17.Windows
 {
     /// <summary>
@@ -25,6 +26,9 @@ namespace LibraryShiryaev2isp11_17.Windows
     {
         List<Customer> userList = new List<Customer>();
         List<string> listSort = new List<string>() { "По умолчанию", "По Фамилии", "По Имени", "По адресу" };
+
+        public List<Issue> IssueList { get; private set; }
+
         public UserListWindow()
         {
             InitializeComponent();
@@ -62,6 +66,11 @@ namespace LibraryShiryaev2isp11_17.Windows
 
 
             ListCustomer.ItemsSource = userList;
+        }
+        private void IsPaidForCheack()
+        {
+            IssueList = AppData.Context.Issue.ToList();
+            
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -121,6 +130,6 @@ namespace LibraryShiryaev2isp11_17.Windows
 
         }
 
-
+        
     }
 }
