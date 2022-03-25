@@ -216,8 +216,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Windows\booki4.jpg" />
-    <Resource Include="Images\booki4.jpg" />
+    <Resource Include="Images\Book.png" />
     <Resource Include="Images\DefaultUser.png" />
     <Resource Include="Windows\DefaultUser.png" />
   </ItemGroup>

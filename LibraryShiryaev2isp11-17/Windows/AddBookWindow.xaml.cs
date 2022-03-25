@@ -36,17 +36,8 @@ namespace LibraryShiryaev2isp11_17.Windows
 
         public AddBookWindow(EF.Book book)
         {
+
             InitializeComponent();
-            tbTitle2.Text = "Изменение данных книги";
-            btnAdd.Content = "Изменить";
-            editBook = book;
-            txtTitle.Text = editBook.Title;
-            txtPublisher.Text = editBook.Publisher;
-            txtInfo.Text = editBook.Info;
-            txtDate.Text = editBook.DateOfPublication.ToString();
-            txtInuse.Text = editBook.BookInUse.ToString();
-            txtSubject.Text = editBook.SubjectID.ToString();
-            isEdit = true;
             if (book.Image != null)
             {
                 using (MemoryStream stream = new MemoryStream(book.Image))
@@ -60,6 +51,18 @@ namespace LibraryShiryaev2isp11_17.Windows
                     imgBook.Source = bitmapImage;
                 }
             }
+
+            tbTitle2.Text = "Изменение данных книги";
+            btnAdd.Content = "Изменить";
+            editBook = book;
+            txtTitle.Text = editBook.Title;
+            txtPublisher.Text = editBook.Publisher;
+            txtInfo.Text = editBook.Info;
+            txtDate.Text = editBook.DateOfPublication.ToString();
+            txtInuse.Text = editBook.BookInUse.ToString();
+            txtSubject.Text = editBook.SubjectID.ToString();
+            isEdit = true;
+            
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -134,8 +137,13 @@ namespace LibraryShiryaev2isp11_17.Windows
                     editBook.Publisher = txtPublisher.Text;
                     editBook.BookInUse = bool.Parse(txtInuse.Text);
                     AppData.Context.SaveChanges();
-                    MessageBox.Show("Успех", " Пользователь изменён", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Успех", " Книга изменена", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
+                    if (pathPhoto2 != null)
+                    {
+                        editBook.Image = File.ReadAllBytes(pathPhoto2);
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -160,9 +168,14 @@ namespace LibraryShiryaev2isp11_17.Windows
                         newBook.DateOfPublication = DateTime.Parse(txtDate.Text);
                         newBook.Publisher = txtPublisher.Text;
                         newBook.BookInUse = bool.Parse(txtInuse.Text);
+                        if (pathPhoto2 != null)
+                        {
+                            newBook.Image = File.ReadAllBytes(pathPhoto2);
+                        }
                         AppData.Context.Book.Add(newBook);
                         AppData.Context.SaveChanges();
                         MessageBox.Show("Книга добавлена ", " Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                        
                         this.Close();
 
                     }
@@ -175,7 +188,9 @@ namespace LibraryShiryaev2isp11_17.Windows
 
             
         }
-        private void btnChoosePhoto_Click(object sender, RoutedEventArgs e)
+        
+
+        private void btnChoosePhoto_Click_1(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
@@ -184,6 +199,7 @@ namespace LibraryShiryaev2isp11_17.Windows
 
                 pathPhoto2 = openFileDialog.FileName;
             }
+           
         }
     }
 }

@@ -53,7 +53,7 @@ Grid.Row="3" Grid.ColumnSpan="2">
             <ListView.ItemTemplate>
 
                 <DataTemplate>
-                    <Border Background="Aqua"
+                    <Border Background="SandyBrown"
                             Height="100"
                             Width="450"
                             Margin="10"
@@ -74,18 +74,17 @@ Grid.Row="3" Grid.ColumnSpan="2">
                             </Grid.RowDefinitions>
 
                             <Image x:Name="photoBook"
-                       Margin="5" 
+                                   Margin="5" 
                        Grid.RowSpan="3">
                                 <Image.Source>
-                                    <Binding Path ="Images">
+                                    <Binding Path ="Image">
                                         <Binding.TargetNullValue>
-                                            <ImageSource>
-                                                /LibraryShiryaev2isp11-17;component/Images/booki4.jpg
-                                            </ImageSource>
+                                            <ImageSource>/LibraryShiryaev2isp11-17;component/Images/Book.png</ImageSource>
                                         </Binding.TargetNullValue>
                                     </Binding>
                                 </Image.Source>
                             </Image>
+                                   
 
                             <TextBlock Text="Название"
                            Grid.Column="1"
@@ -114,7 +113,7 @@ Grid.Row="3" Grid.ColumnSpan="2">
                            Grid.Row="0"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           Margin="10 8 0 8"/>
+                           Margin="10 8 -10 8"/>
 
                             <TextBlock Text="{Binding Path=ShortInfo}"
                            Grid.Column="2"
