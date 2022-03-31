@@ -53,10 +53,11 @@
    
    ![image](https://user-images.githubusercontent.com/82766372/158781792-13be6752-9a49-4412-b86b-eccb9a70d3a4.png)
    
-   <h1 align "center"> Добавлено 10 модульных тестов
+   <h1 align "center"> Добавлено 10 модульных тестов<h1>
 
-    ![image](https://user-images.githubusercontent.com/82766372/161012840-c4898343-5ea7-4297-8a0d-965f3db3098e.png)
+![image](https://user-images.githubusercontent.com/82766372/161012840-c4898343-5ea7-4297-8a0d-965f3db3098e.png)
 
+![image](https://user-images.githubusercontent.com/82766372/161013486-8068ff8a-c5eb-4313-8e91-604636646c49.png)
 
 
 
