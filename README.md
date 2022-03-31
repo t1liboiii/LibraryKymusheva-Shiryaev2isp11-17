@@ -55,6 +55,8 @@
    
    <h1 align "center"> Добавлено 10 модульных тестов
 
+    ![image](https://user-images.githubusercontent.com/82766372/161012840-c4898343-5ea7-4297-8a0d-965f3db3098e.png)
+
 
 
 
