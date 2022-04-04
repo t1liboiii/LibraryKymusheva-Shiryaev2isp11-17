@@ -18,7 +18,7 @@ namespace LibraryShiryaev2isp11_17.EF
         public Customer()
         {
             this.BookInUse = new HashSet<BookInUse>();
-            this.Issue1 = new HashSet<Issue>();
+            this.GiveBook = new HashSet<GiveBook>();
         }
     
         public int CustID { get; set; }
@@ -29,12 +29,10 @@ namespace LibraryShiryaev2isp11_17.EF
         public System.DateTime Birthday { get; set; }
         public string Adress { get; set; }
         public byte[] Image { get; set; }
-        public Nullable<int> IssueID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookInUse> BookInUse { get; set; }
-        public virtual Issue Issue { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Issue> Issue1 { get; set; }
+        public virtual ICollection<GiveBook> GiveBook { get; set; }
     }
 }

@@ -86,7 +86,7 @@
     <Compile Include="EF\Employe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\Issue.cs">
+    <Compile Include="EF\GiveBook.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Model1.cs">

@@ -38,5 +38,20 @@ namespace LibraryShiryaev2isp11_17
             UserListWindow userListWindow = new UserListWindow();
             userListWindow.Show();
         }
+
+        private void btnGive_Click(object sender, RoutedEventArgs e)
+        {
+           
+                
+        }
+
+        
+
+        private void btdExit_Click(object sender, RoutedEventArgs e)
+        {
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+            this.Close();
+        }
     }
 }

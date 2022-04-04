@@ -60,7 +60,7 @@ namespace LibraryShiryaev2isp11_17.Windows
             txtInfo.Text = editBook.Info;
             txtDate.Text = editBook.DateOfPublication.ToString();
             txtInuse.Text = editBook.BookInUse.ToString();
-            txtSubject.Text = editBook.SubjectID.ToString();
+            
             isEdit = true;
             
         }
@@ -68,11 +68,7 @@ namespace LibraryShiryaev2isp11_17.Windows
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
            
-            if (string.IsNullOrWhiteSpace(txtSubject.Text))
-            {
-                MessageBox.Show("Поле SubjectID не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+            
             if (string.IsNullOrWhiteSpace(txtTitle.Text))
             {
                 MessageBox.Show("Поле Title не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -101,28 +97,28 @@ namespace LibraryShiryaev2isp11_17.Windows
            
             if (txtDate.Text.Length > 100)
             {
-                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Недоступное кол-во символов1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (txtInfo.Text.Length > 1000)
             {
-                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Недоступное кол-во символов2", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (txtInuse.Text.Length > 5)
             {
-                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Недоступное кол-во символов3", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (txtPublisher.Text.Length > 30)
             {
-                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Недоступное кол-во символов4", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             
             if (txtTitle.Text.Length > 100)
             {
-                MessageBox.Show("Недоступное кол-во символов", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Недоступное кол-во символов5", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -130,7 +126,7 @@ namespace LibraryShiryaev2isp11_17.Windows
             {
                 try
                 {
-                    editBook.SubjectID = int.Parse(txtSubject.Text);
+                    
                     editBook.Title = txtTitle.Text;
                     editBook.Info = txtInfo.Text;
                     editBook.DateOfPublication = DateTime.Parse(txtDate.Text);
@@ -162,7 +158,7 @@ namespace LibraryShiryaev2isp11_17.Windows
                     if (resultClick == MessageBoxResult.Yes)
                     {
                         EF.Book newBook = new EF.Book();
-                        newBook.SubjectID = int.Parse(txtSubject.Text);
+                        
                         newBook.Title = txtTitle.Text;
                         newBook.Info = txtInfo.Text;
                         newBook.DateOfPublication = DateTime.Parse(txtDate.Text);

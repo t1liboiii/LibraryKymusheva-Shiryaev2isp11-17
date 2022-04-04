@@ -14,22 +14,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="blwbtn"
-                Width="150"
                 Click="blwbtn_Click"
+                Style="{DynamicResource RoundCorner}"
                 Content="Список книг"
                 Grid.Column="1"
-                Background="SandyBrown" Margin="125,223,121,143"/>
+                Background="SandyBrown" Margin="125,179,100,187"/>
+        <Button x:Name="btnGive"
+                Click="btnGive_Click"
+                Style="{DynamicResource RoundCorner}"
+                Content="Выдача книги"
+                Grid.Column="1"
+                Background="SandyBrown" Margin="125,289,100,77"/>
         <Button x:Name="CustList"
-                Width="150"
+                 Style="{DynamicResource RoundCorner}"
                 Grid.Column="1"
                 Background="SandyBrown"
                 Content="Списко Читателей"
-                Click="CustList_Click" Margin="125,124,121,244"/>
+                Click="CustList_Click" Margin="125,67,101,301"/>
         <TextBlock x:Name="tbUserList"
                    Width="350"
                    Height="40"
 Text="Перейти на страницу списка пользователей"
-  FontSize="17" Margin="25,123,21,256"
+  FontSize="17" Margin="25,78,21,301"
                            >
 
         </TextBlock>
@@ -37,7 +43,22 @@ Text="Перейти на страницу списка пользователе
             Width="350"
             Height="40"
             Text="Перейти на страницу списка книг"
-            FontSize="17" Margin="25,227,21,152"
+            FontSize="17" Margin="25,185,21,194"
                            />
+        <TextBlock x:Name="tbBookGive"
+            Width="350"
+            Height="40"
+            Text="Перейти на страницу выдачи книг "
+            FontSize="17" Margin="25,301,21,78"
+                           />
+        <Button
+x:Name="btdExit"
+Width="100"
+HorizontalAlignment="Left"
+Content="Выйти"
+FontSize="16"
+Click="btdExit_Click"
+Style="{DynamicResource RoundCorner2}" Margin="0,371,0,0"/>
+
     </Grid>
 </Window>

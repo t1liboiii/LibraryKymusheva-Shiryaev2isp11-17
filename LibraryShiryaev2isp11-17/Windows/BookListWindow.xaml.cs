@@ -120,5 +120,12 @@ namespace LibraryShiryaev2isp11_17.Windows
             addbookListWindow.Show();
             ListBook.ItemsSource = AppData.Context.Book.ToString();
         }
+
+        private void btdBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

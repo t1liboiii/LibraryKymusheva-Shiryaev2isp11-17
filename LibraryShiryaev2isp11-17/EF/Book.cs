@@ -18,25 +18,21 @@ namespace LibraryShiryaev2isp11_17.EF
         public Book()
         {
             this.BookInUse1 = new HashSet<BookInUse>();
-            this.Issue = new HashSet<Issue>();
+            this.GiveBook = new HashSet<GiveBook>();
         }
     
         public int BookID { get; set; }
-        public int SubjectID { get; set; }
         public string Title { get; set; }
         public string Info { get; set; }
         public System.DateTime DateOfPublication { get; set; }
         public string Publisher { get; set; }
-        public int NumberOfRacks { get; set; }
-        public int NumberOfBooks { get; set; }
         public bool BookInUse { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public string ShortInfo { get; set; }
         public byte[] Image { get; set; }
+        public string ShortInfo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookInUse> BookInUse1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Issue> Issue { get; set; }
+        public virtual ICollection<GiveBook> GiveBook { get; set; }
     }
 }

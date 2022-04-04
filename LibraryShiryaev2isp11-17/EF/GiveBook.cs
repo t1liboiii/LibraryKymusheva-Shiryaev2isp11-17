@@ -12,14 +12,13 @@ namespace LibraryShiryaev2isp11_17.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class BookInUse
+    public partial class GiveBook
     {
-        public int ID { get; set; }
+        public int CustomerID { get; set; }
         public int BookID { get; set; }
-        public int CustID { get; set; }
-        public System.DateTime DateOfIssue { get; set; }
+        public System.DateTime DateStart { get; set; }
+        public System.DateTime DateEnd { get; set; }
         public Nullable<int> EmployeID { get; set; }
-        public System.DateTime DateReturn { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Customer Customer { get; set; }

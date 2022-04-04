@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\IMac3\Source\Repos\LibraryShiryaev2isp11-17(3)\LibraryShiryaev2isp11-17\EF\Model1.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\t1liboiii\source\repos\LibraryShiryaev2isp11-172\LibraryShiryaev2isp11-17\EF\Model1.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

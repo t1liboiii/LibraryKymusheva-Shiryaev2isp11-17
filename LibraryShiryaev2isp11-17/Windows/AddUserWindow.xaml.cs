@@ -179,6 +179,10 @@ namespace LibraryShiryaev2isp11_17.Windows
                 pathPhoto = openFileDialog.FileName;
             }
         }
-        
+
+        private void txtFirstName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

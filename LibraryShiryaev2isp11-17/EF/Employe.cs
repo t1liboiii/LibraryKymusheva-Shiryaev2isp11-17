@@ -18,6 +18,7 @@ namespace LibraryShiryaev2isp11_17.EF
         public Employe()
         {
             this.BookInUse = new HashSet<BookInUse>();
+            this.GiveBook = new HashSet<GiveBook>();
         }
     
         public int ID { get; set; }
@@ -30,5 +31,7 @@ namespace LibraryShiryaev2isp11_17.EF
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookInUse> BookInUse { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GiveBook> GiveBook { get; set; }
     }
 }
