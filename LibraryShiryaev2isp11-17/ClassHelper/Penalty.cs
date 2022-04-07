@@ -7,7 +7,7 @@ using LibraryShiryaev2isp11_17.ClassHelper;
 using LibraryShiryaev2isp11_17.EF;
 namespace LibraryShiryaev2isp11_17.ClassHelper
 {
-   public static class Penalty
+   public partial class Penalty
     {
         public static double DebtClient(DateTime dateStart, double price)
         {

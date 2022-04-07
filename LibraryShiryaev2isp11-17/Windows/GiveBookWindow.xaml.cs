@@ -20,7 +20,7 @@ namespace LibraryShiryaev2isp11_17.Windows
     /// </summary>
     public partial class GiveBookWindow : Window
     {
-        List<GiveBook> rentBookList = new List<GiveBook>();
+        List<GiveBook> giveBookList = new List<GiveBook>();
         List<string> listSort = new List<string>()
         {
             "По умолчанию",
@@ -38,8 +38,8 @@ namespace LibraryShiryaev2isp11_17.Windows
         }
         private void Filter()
         {
-            rentBookList = AppData.Context.GiveBook.ToList();
-            rentBookList = rentBookList.
+            giveBookList = AppData.Context.GiveBook.ToList();
+            giveBookList = giveBookList.
                             Where(i => i.Customer.LastName.ToLower().Contains(txtSearch.Text.ToLower()) ||
                             i.Customer.FirstName.ToLower().Contains(txtSearch.Text.ToLower()) ||
                             i.Book.Title.ToLower().Contains(txtSearch.Text.ToLower()) ||
@@ -49,23 +49,23 @@ namespace LibraryShiryaev2isp11_17.Windows
             switch (cmbSort.SelectedIndex)
             {
                 case 0:
-                    rentBookList = rentBookList.OrderBy(i => i.CustomerID).ToList();
+                    giveBookList = giveBookList.OrderBy(i => i.CustomerID).ToList();
                     break;
                 case 1:
-                    rentBookList = rentBookList.OrderBy(i => i.Customer.LastName).ToList();
+                    giveBookList = giveBookList.OrderBy(i => i.Customer.LastName).ToList();
                     break;
                 case 2:
-                    rentBookList = rentBookList.OrderBy(i => i.Customer.FirstName).ToList();
+                    giveBookList = giveBookList.OrderBy(i => i.Customer.FirstName).ToList();
                     break;
                 case 3:
-                    rentBookList = rentBookList.OrderBy(i => i.Book.Title).ToList();
+                    giveBookList = giveBookList.OrderBy(i => i.Book.Title).ToList();
                     break;
                 default:
-                    rentBookList = rentBookList.OrderBy(i => i.CustomerID).ToList();
+                    giveBookList = giveBookList.OrderBy(i => i.CustomerID).ToList();
                     break;
             }
 
-            listRentBook.ItemsSource = rentBookList;
+            GiveList.ItemsSource = giveBookList;
         }
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -87,16 +87,16 @@ namespace LibraryShiryaev2isp11_17.Windows
         {
             if (e.Key == Key.Delete)
             {
-                if (listRentBook.SelectedItem is EF.Book)
+                if (GiveList.SelectedItem is EF.Book)
                 {
                     try
                     {
-                        var item = listRentBook.SelectedItem as EF.Book;
+                        var item = GiveList.SelectedItem as EF.Book;
                         var resultClick = MessageBox.Show("Вы уверены?", "Подтвердите удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (resultClick == MessageBoxResult.Yes)
                         {
-                            AppDate.Context.Book.Remove(item);
-                            AppDate.Context.SaveChanges();
+                            AppData.Context.Book.Remove(item);
+                            AppData.Context.SaveChanges();
                             MessageBox.Show("Запись успешно удалена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                             Filter();
                         }
@@ -111,9 +111,9 @@ namespace LibraryShiryaev2isp11_17.Windows
 
         private void btnAddRentBook_Click(object sender, RoutedEventArgs e)
         {
-            AddEditRentBookWindow addRentBookWindow = new AddEditRentBookWindow();
+            AddEditGiveBook addEditGiveBook = new AddEditGiveBook();
             this.Opacity = 0.2;
-            addRentBookWindow.ShowDialog();
+            addEditGiveBook.ShowDialog();
             this.Opacity = 1;
             Filter();
         }
@@ -130,13 +130,13 @@ namespace LibraryShiryaev2isp11_17.Windows
 
         private void listRentBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var bookRental = new EF.GiveBook();
+            var bookgive = new EF.GiveBook();
 
-            if (listRentBook.SelectedItem is EF.GiveBook)
+            if (GiveList.SelectedItem is EF.GiveBook)
             {
-                bookRental = listRentBook.SelectedItem as EF.GiveBook;
+                bookgive = GiveList.SelectedItem as EF.GiveBook;
             }
-            AddEditGiveBook addEditGiveBook = new AddEditGiveBook(bookRental);
+            AddEditGiveBook addEditGiveBook = new AddEditGiveBook(bookgive);
             this.Opacity = 0.2;
             addEditGiveBook.ShowDialog();
             this.Opacity = 1;

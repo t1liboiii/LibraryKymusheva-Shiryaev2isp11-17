@@ -19,9 +19,6 @@ namespace LibraryShiryaev2isp11_17.EF
         public System.DateTime DateStart { get; set; }
         public System.DateTime DateEnd { get; set; }
         public Nullable<int> EmployeID { get; set; }
-    
-        public virtual Book Book { get; set; }
-        public virtual Customer Customer { get; set; }
-        public virtual Employe Employe { get; set; }
+        public Nullable<double> DebtRatio { get; set; }
     }
 }

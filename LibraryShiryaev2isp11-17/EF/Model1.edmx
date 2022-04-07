@@ -92,6 +92,7 @@
           <Property Name="DateStart" Type="date" Nullable="false" />
           <Property Name="DateEnd" Type="date" Nullable="false" />
           <Property Name="EmployeID" Type="int" />
+          <Property Name="DebtRatio" Type="float" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -182,42 +183,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_GiveBook_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="1" />
-          <End Role="GiveBook" Type="Self.GiveBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="BookID" />
-            </Principal>
-            <Dependent Role="GiveBook">
-              <PropertyRef Name="BookID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GiveBook_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="GiveBook" Type="Self.GiveBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustID" />
-            </Principal>
-            <Dependent Role="GiveBook">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GiveBook_Employe">
-          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
-          <End Role="GiveBook" Type="Self.GiveBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employe">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GiveBook">
-              <PropertyRef Name="EmployeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -289,18 +254,6 @@
             <End Role="Employe" EntitySet="Employe" />
             <End Role="BookInUse" EntitySet="BookInUse" />
           </AssociationSet>
-          <AssociationSet Name="FK_GiveBook_Book" Association="Self.FK_GiveBook_Book">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="GiveBook" EntitySet="GiveBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GiveBook_Customer" Association="Self.FK_GiveBook_Customer">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="GiveBook" EntitySet="GiveBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GiveBook_Employe" Association="Self.FK_GiveBook_Employe">
-            <End Role="Employe" EntitySet="Employe" />
-            <End Role="GiveBook" EntitySet="GiveBook" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -354,10 +307,6 @@
             <End Role="Book" EntitySet="Book" />
             <End Role="BookInUse" EntitySet="BookInUse" />
           </AssociationSet>
-          <AssociationSet Name="FK_GiveBook_Book" Association="LibraryShiryaev2ISP1117Model.FK_GiveBook_Book">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="GiveBook" EntitySet="GiveBook" />
-          </AssociationSet>
           <AssociationSet Name="FK_BookInUse_Customer" Association="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="BookInUse" EntitySet="BookInUse" />
@@ -365,14 +314,6 @@
           <AssociationSet Name="FK_BookInUse_Employe" Association="LibraryShiryaev2ISP1117Model.FK_BookInUse_Employe">
             <End Role="Employe" EntitySet="Employe" />
             <End Role="BookInUse" EntitySet="BookInUse" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GiveBook_Customer" Association="LibraryShiryaev2ISP1117Model.FK_GiveBook_Customer">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="GiveBook" EntitySet="GiveBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GiveBook_Employe" Association="LibraryShiryaev2ISP1117Model.FK_GiveBook_Employe">
-            <End Role="Employe" EntitySet="Employe" />
-            <End Role="GiveBook" EntitySet="GiveBook" />
           </AssociationSet>
           <AssociationSet Name="AuthSubj" Association="LibraryShiryaev2ISP1117Model.AuthSubj">
             <End Role="Author" EntitySet="Author" />
@@ -424,7 +365,6 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ShortInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BookInUse1" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book" FromRole="Book" ToRole="BookInUse" />
-          <NavigationProperty Name="GiveBook" Relationship="LibraryShiryaev2ISP1117Model.FK_GiveBook_Book" FromRole="Book" ToRole="GiveBook" />
         </EntityType>
         <EntityType Name="BookInUse">
           <Key>
@@ -453,7 +393,6 @@
           <Property Name="Adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="BookInUse" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer" FromRole="Customer" ToRole="BookInUse" />
-          <NavigationProperty Name="GiveBook" Relationship="LibraryShiryaev2ISP1117Model.FK_GiveBook_Customer" FromRole="Customer" ToRole="GiveBook" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
@@ -467,7 +406,6 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BookInUse" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Employe" FromRole="Employe" ToRole="BookInUse" />
-          <NavigationProperty Name="GiveBook" Relationship="LibraryShiryaev2ISP1117Model.FK_GiveBook_Employe" FromRole="Employe" ToRole="GiveBook" />
         </EntityType>
         <EntityType Name="GiveBook">
           <Key>
@@ -479,9 +417,7 @@
           <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EmployeID" Type="Int32" />
-          <NavigationProperty Name="Book" Relationship="LibraryShiryaev2ISP1117Model.FK_GiveBook_Book" FromRole="GiveBook" ToRole="Book" />
-          <NavigationProperty Name="Customer" Relationship="LibraryShiryaev2ISP1117Model.FK_GiveBook_Customer" FromRole="GiveBook" ToRole="Customer" />
-          <NavigationProperty Name="Employe" Relationship="LibraryShiryaev2ISP1117Model.FK_GiveBook_Employe" FromRole="GiveBook" ToRole="Employe" />
+          <Property Name="DebtRatio" Type="Double" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -525,18 +461,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_GiveBook_Book">
-          <End Type="LibraryShiryaev2ISP1117Model.Book" Role="Book" Multiplicity="1" />
-          <End Type="LibraryShiryaev2ISP1117Model.GiveBook" Role="GiveBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="BookID" />
-            </Principal>
-            <Dependent Role="GiveBook">
-              <PropertyRef Name="BookID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BookInUse_Customer">
           <End Type="LibraryShiryaev2ISP1117Model.Customer" Role="Customer" Multiplicity="1" />
           <End Type="LibraryShiryaev2ISP1117Model.BookInUse" Role="BookInUse" Multiplicity="*" />
@@ -557,30 +481,6 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BookInUse">
-              <PropertyRef Name="EmployeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GiveBook_Customer">
-          <End Type="LibraryShiryaev2ISP1117Model.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="LibraryShiryaev2ISP1117Model.GiveBook" Role="GiveBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustID" />
-            </Principal>
-            <Dependent Role="GiveBook">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GiveBook_Employe">
-          <End Type="LibraryShiryaev2ISP1117Model.Employe" Role="Employe" Multiplicity="0..1" />
-          <End Type="LibraryShiryaev2ISP1117Model.GiveBook" Role="GiveBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employe">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GiveBook">
               <PropertyRef Name="EmployeID" />
             </Dependent>
           </ReferentialConstraint>
@@ -695,6 +595,7 @@
           <EntitySetMapping Name="GiveBook">
             <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.GiveBook">
               <MappingFragment StoreEntitySet="GiveBook">
+                <ScalarProperty Name="DebtRatio" ColumnName="DebtRatio" />
                 <ScalarProperty Name="EmployeID" ColumnName="EmployeID" />
                 <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
                 <ScalarProperty Name="DateStart" ColumnName="DateStart" />

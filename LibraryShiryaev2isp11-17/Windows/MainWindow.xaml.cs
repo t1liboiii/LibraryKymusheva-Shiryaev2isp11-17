@@ -30,18 +30,22 @@ namespace LibraryShiryaev2isp11_17
         {
             BookListWindow bookListWindow = new BookListWindow();
             bookListWindow.Show();
-            
+            this.Close();
+
         }
 
         private void CustList_Click(object sender, RoutedEventArgs e)
         {
             UserListWindow userListWindow = new UserListWindow();
             userListWindow.Show();
+            this.Close();
         }
 
         private void btnGive_Click(object sender, RoutedEventArgs e)
         {
-           
+            GiveBookWindow giveBookWindow = new GiveBookWindow();
+            giveBookWindow.Show();
+            this.Close();
                 
         }
 

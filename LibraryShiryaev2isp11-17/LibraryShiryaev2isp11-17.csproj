@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="ClassHelper\AppData.cs" />
     <Compile Include="ClassHelper\Book1.cs" />
+    <Compile Include="ClassHelper\Debt.cs" />
     <Compile Include="ClassHelper\Penalty.cs" />
     <Compile Include="ClassHelper\User.cs" />
     <Compile Include="EF\AuthBook.cs">
