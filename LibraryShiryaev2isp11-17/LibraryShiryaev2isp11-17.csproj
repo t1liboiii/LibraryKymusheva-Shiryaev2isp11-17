@@ -112,8 +112,14 @@
     <Compile Include="Windows\AddBookWindow.xaml.cs">
       <DependentUpon>AddBookWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddEditGiveBook.xaml.cs">
+      <DependentUpon>AddEditGiveBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GiveBookWindow.xaml.cs">
+      <DependentUpon>GiveBookWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\UserListWindow.xaml.cs">
       <DependentUpon>UserListWindow.xaml</DependentUpon>
@@ -126,6 +132,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\AddEditGiveBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AddUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\BookListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GiveBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

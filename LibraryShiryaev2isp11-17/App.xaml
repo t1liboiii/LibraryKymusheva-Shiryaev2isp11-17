@@ -162,8 +162,8 @@
                                                     <TranslateTransform X="0.02" Y="0.3"/>
                                                 </TransformGroup>
                                             </RadialGradientBrush.RelativeTransform>
-                                            <GradientStop Color="IndianRed" Offset="1"/>
-                                            <GradientStop Color="IndianRed" Offset="0.3"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="White" Offset="0.3"/>
                                         </RadialGradientBrush>
                                     </Setter.Value>
                                 </Setter>

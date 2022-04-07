@@ -1,0 +1,278 @@
+﻿<Window x:Class="LibraryShiryaev2isp11_17.Windows.GiveBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
+        mc:Ignorable="d"
+        Title="GiveBookWindow" 
+        Height="600"
+        Background="Bisque"
+        Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <TextBlock Text="Выдача книг"
+                       HorizontalAlignment="Center"
+                       FontSize="35"
+                       FontFamily="Helvetica"
+                       LineHeight="32"
+                       FontStyle="Normal"
+                       FontWeight="Bold"
+                       FontStretch="Normal"
+                         Foreground="Black"/>
+
+        <WrapPanel Grid.Row="1"
+                   VerticalAlignment="Center">
+            <TextBlock Text="Поиск"
+                       
+                       Margin="20 0 10 0"
+                       FontSize="18"
+                       FontFamily="Helvetica"
+                       FontStyle="Normal"
+                       FontWeight="Bold"
+                       FontStretch="Normal"
+                       Foreground="Black"/>
+
+            <TextBox x:Name="txtSearch"
+                     Width="150"
+                     FontSize="18"
+                     TextChanged="txtSearch_TextChanged"
+                     Style="{DynamicResource txtRound}"/>
+
+            <ComboBox x:Name="cmbSort"
+                      Width="150"
+                      Margin="20 0 0 0"
+                      SelectionChanged="cmbSort_SelectionChanged"/>
+
+            <TextBlock Text="Дата выдачи"
+                       Margin="20 0 0 0"
+                       FontSize="18"
+                       FontFamily="Helvetica"
+                       FontStyle="Normal"
+                       FontWeight="Bold"
+                       FontStretch="Normal"
+                        Foreground="Black"/>
+
+            <DatePicker x:Name="dpDateStart"
+                        Margin="10 0 0 0"
+                        SelectedDateFormat="Short"
+                        IsDropDownOpen="False"
+                        SelectedDateChanged="dpDateStart_SelectedDateChanged"/>
+
+            <TextBlock Text="Дата возврата"
+                       Margin="20 0 0 0"
+                       FontSize="18"
+                       FontFamily="Helvetica"
+                       FontStyle="Normal"
+                       FontWeight="Bold"
+                       FontStretch="Normal"
+                         Foreground="Black"/>
+
+            <DatePicker x:Name="dpDateEnd"
+                        Margin="10 0 0 0"
+                        SelectedDateFormat="Short"
+                        IsDropDownOpen="False"
+                        SelectedDateChanged="dpDateEnd_SelectedDateChanged"/>
+        </WrapPanel>
+
+        <ListView x:Name="listRentBook"
+                  Grid.Row="3"
+                  KeyUp="listRentBook_KeyUp"
+                  MouseDoubleClick="listRentBook_MouseDoubleClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#1da1f2"
+                            Height="100"
+                            Width="945"
+                            Margin="5"
+                            CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="photoUser"
+                                   Height="80">
+                                <Image.Source>
+                                    <Binding Path ="Reader.Photo">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>
+                                                
+                                             /Images/DefaultUser.png
+
+                                            </ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <StackPanel Grid.Column="1"
+                                        Margin="0 10 10 0">
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="Фамилия читателя"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="Имя читателя"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="Название книги"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="Процент задолжности"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2"
+                                        Margin="10 10 0 0">
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=Reader.LastName}"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=Reader.FirstName}"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=Book.Title}"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=GetDebt}"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Helvetica"
+                                           Foreground="{Binding Path=GetColor}"
+                                           FontSize="12"
+                                           x:Name="tbDebtRatio"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="3"
+                                        Margin="0 10 10 0">
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="Дата когда взял книгу"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="Дата возврата книги"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="Фамилия сотрудника"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="Имя сотрудника"
+                                           HorizontalAlignment="Right"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="4"
+                                        Margin="10 10 0 0">
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=StartDate}"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=EndDate}"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=Emplovee.LastName}"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=Emplovee.FirstName}"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Helvetica"
+                                           Foreground="#ffffff"
+                                           FontSize="12"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="btnBack"
+                Content="Назад"
+                Style="{DynamicResource RoundCorner2}"
+                Grid.Row="4"
+                Width="100"
+                Height="30"
+                FontFamily="Helvetica"
+                Foreground="#ffffff"
+                HorizontalAlignment="Left"
+                Margin="10 0 0 0"
+                FontSize="20"
+                Click="btnBack_Click"/>
+
+        <Button  x:Name="btnAddRentBook"
+                 Content="Добавить"
+                 FontSize="20"
+                 Margin="0 0 10 0"
+                 HorizontalAlignment="Right"
+                 Width="100"
+                 Height="30"
+                 FontFamily="Helvetica"
+                 Foreground="#ffffff"
+                 Style="{DynamicResource RoundCorner3}"
+                 Grid.Row="4"
+                 Click="btnAddRentBook_Click"/>
+    </Grid>
+</Window>
