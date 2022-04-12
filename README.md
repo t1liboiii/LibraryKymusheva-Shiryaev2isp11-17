@@ -9,7 +9,7 @@
 
 ![image](https://user-images.githubusercontent.com/82766372/163041506-04a57b4b-682e-433f-ada4-331118e009a7.png)
 
- На главной странице есть 2 кнопки которые дают возможность перейти на страницу списка читателей и страницу списка книг<h1>
+ На главной странице есть 3 кнопки которые дают возможность перейти на страницу списка читателей, страницу списка книг, страницу выдачи книг<h1>
 
 <h1 align "center">Список книг:
 
@@ -46,6 +46,13 @@
 ![image](https://user-images.githubusercontent.com/82766372/161013486-8068ff8a-c5eb-4313-8e91-604636646c49.png)
     
 ![image](https://user-images.githubusercontent.com/82766372/161013686-bf525fd1-5810-455d-ad24-fc07e3a9adae.png)
+
+
+ <h1 align "center"> Добавлено 2 страницы добавление и списка выдачи книг<h1>
+
+![image](https://user-images.githubusercontent.com/82766372/163042894-f55f5da3-ad38-4022-89f0-a58e1706b442.png)
+
+ ![image](https://user-images.githubusercontent.com/82766372/163042945-bf3ecb4d-4451-4517-9749-46648a746d30.png)
 
 
 
