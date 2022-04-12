@@ -2,32 +2,43 @@
 # Описание проекта 
 <h1 align "center"> При запуске проекта мы попадаем на окно авторизации<h1>
 
-![image](https://user-images.githubusercontent.com/82766372/154956527-4cd576d4-2432-4a39-b82e-4d8199ae27df.png)
+![image](https://user-images.githubusercontent.com/82766372/163041471-aa448ee5-0ae5-421c-a0d9-6630292bab15.png)
+
 
 <h1 align "center"> После авторизации мы попадаем на главную страницу
 
-![image](https://user-images.githubusercontent.com/82766372/154958414-396a0f5f-0df2-414d-b5be-cac62d8537f5.png)
+![image](https://user-images.githubusercontent.com/82766372/163041506-04a57b4b-682e-433f-ada4-331118e009a7.png)
 
- На главной странице есть 2 кнопки которые дают возможность перейти на страницу списка читателей и страницу списка книг<h1>
+ На главной странице есть 3 кнопки которые дают возможность перейти на страницу списка читателей, страницу списка книг, страницу выдачи книг<h1>
 
 <h1 align "center">Список книг:
 
-![image](https://user-images.githubusercontent.com/82766372/154962233-6c6b7add-f13c-467b-bc54-8753a130ec1b.png)
+![image](https://user-images.githubusercontent.com/82766372/163041671-453739e9-ae78-4f16-9f3d-86a75fbd665c.png)
 
-Список читателей: ![image](https://user-images.githubusercontent.com/82766372/154962314-fc2a0104-6135-4188-b1f9-9f30e4af26b2.png)
+Список читателей: ![image](https://user-images.githubusercontent.com/82766372/163042695-9cfa7536-9a82-4613-9f23-3e21c112003b.png)
 
 На этих страницах присутствует фильтр имён/названий, и сортировка по фамилии,имени,адресу/названию,изданию,используемости.<h1>
-<h1 align "center"> Так же на этих страницах присутсвуют кнопки, которые позволяют добавить читателя/книгу
+<h1 align "center"> Так же на этих страницах присутсвуют кнопки, которые позволяют добавить читателя/книгу/ и изображение
 
-![image](https://user-images.githubusercontent.com/82766372/154962688-b0a8ba4d-a880-4aa0-8a97-99ecb6dfdb09.png)
+![image](https://user-images.githubusercontent.com/82766372/163041954-c4913296-20fb-4db0-bf81-19699ac4b5d0.png)
 
-![image](https://user-images.githubusercontent.com/82766372/154962876-6c0947f2-6c2d-4e35-a38e-3e7172a5f431.png)
+![image](https://user-images.githubusercontent.com/82766372/163042095-2138c175-280e-41c4-8212-d5544cba906c.png)
 
 ![image](https://user-images.githubusercontent.com/82766372/154963633-6df44847-d8d4-4591-a4c4-96e58bed3bc6.png)
 
 ![image](https://user-images.githubusercontent.com/82766372/154963845-774f9af4-1564-46a2-b930-f23e06358f7a.png)
 
 ![image](https://user-images.githubusercontent.com/82766372/154963661-1519d8f6-102c-46c2-ac8d-0317e56efc45.png)<h1>
+
+<h1 align "center"> Присутствует возможность изменение пользователя/книги/инормации по поводу выдачи книги
+
+![image](https://user-images.githubusercontent.com/82766372/163043580-8ea0b5a2-d612-413d-ab00-10ff96f4663e.png)
+ 
+ ![image](https://user-images.githubusercontent.com/82766372/163043639-ff31691d-ec73-40c3-9c51-088712c52b98.png)
+
+ ![image](https://user-images.githubusercontent.com/82766372/163043686-51e79d8a-5589-4d40-a1ec-7ce3af4e8184.png)
+
+
 
 <h1 align "center"> В свою очередь удаление так же присутствует, оно срабатывает через нажатие кнопки del/backspace
 
@@ -37,21 +48,6 @@
 
 ![image](https://user-images.githubusercontent.com/82766372/154964077-c5bff8d0-28dc-49dc-ac65-5a273a52883e.png)<h1>
 
- <h1 align "center"> Реализована возможность добавления фото для пользователя<h1>
- 
-![image](https://user-images.githubusercontent.com/82766372/157621593-d96cd1bb-ca91-440b-9861-36937212fde2.png)
-  
-![image](https://user-images.githubusercontent.com/82766372/157627187-97fcfd11-a8d6-483d-9897-8ffeb4bf28c4.png)
-  
-  <h1 align "center"> Реализована возможность добавления фото для книги<h1>
-   
-  ![image](https://user-images.githubusercontent.com/82766372/160074875-7ec98e3d-9a53-4951-bb99-1388c2d58fe4.png)
-   
-   ![image](https://user-images.githubusercontent.com/82766372/160074963-3dd9ecf6-e83e-4795-8708-22c3140f4cf3.png)
-
-  <h1 align "center"> Добавлен класс расчитывающий задолженность клиента за книжку<h1>
-   
-   ![image](https://user-images.githubusercontent.com/82766372/158781792-13be6752-9a49-4412-b86b-eccb9a70d3a4.png)
    
    <h1 align "center"> Добавлено 10 модульных тестов<h1>
 
@@ -60,6 +56,13 @@
 ![image](https://user-images.githubusercontent.com/82766372/161013486-8068ff8a-c5eb-4313-8e91-604636646c49.png)
     
 ![image](https://user-images.githubusercontent.com/82766372/161013686-bf525fd1-5810-455d-ad24-fc07e3a9adae.png)
+
+
+ <h1 align "center"> Добавлено 2 страницы добавление и списка выдачи книг<h1>
+
+![image](https://user-images.githubusercontent.com/82766372/163042894-f55f5da3-ad38-4022-89f0-a58e1706b442.png)
+
+ ![image](https://user-images.githubusercontent.com/82766372/163042945-bf3ecb4d-4451-4517-9749-46648a746d30.png)
 
 
 
