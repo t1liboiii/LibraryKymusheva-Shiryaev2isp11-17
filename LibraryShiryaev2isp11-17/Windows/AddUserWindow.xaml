@@ -127,7 +127,8 @@ Title="Добавление Клиента" Height="450" Width="600">
             Text="Добавление читателя"
 VerticalAlignment="Center"
 HorizontalAlignment="Center"
-FontSize="25"
+FontSize="35"
+                   FontWeight="Bold"
 Grid.ColumnSpan="2"/>
         <TextBlock Text="Фамилия"
 VerticalAlignment="Center"

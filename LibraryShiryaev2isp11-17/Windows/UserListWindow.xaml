@@ -82,6 +82,7 @@
 
         <TextBlock Text="Список читателей"
 VerticalAlignment="Center"
+                   FontWeight="Bold"
 HorizontalAlignment="Center"
 FontSize="25"/>
 
@@ -111,7 +112,7 @@ Grid.Row="3">
             <ListView.ItemTemplate>
 
                 <DataTemplate>
-                    <Border Background="Aqua"
+                    <Border Background="SandyBrown"
                             Height="100"
                             Width="450"
                             Margin="10"

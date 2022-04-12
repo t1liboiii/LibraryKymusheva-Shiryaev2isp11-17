@@ -84,6 +84,8 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Список книг"
+                   FontWeight="Bold"
+                   
 
 
 FontSize="25" Grid.Column="1" Margin="266,-1,-266,1" />

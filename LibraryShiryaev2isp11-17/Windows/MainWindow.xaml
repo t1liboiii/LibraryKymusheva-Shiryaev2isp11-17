@@ -20,6 +20,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="blwbtn"
                 Click="blwbtn_Click"
+                
                 Style="{DynamicResource RoundCorner}"
                 Content="Список книг"
                 Grid.Column="1"
@@ -33,6 +34,7 @@
         <Button x:Name="CustList"
                  Style="{DynamicResource RoundCorner}"
                 Grid.Column="1"
+                
                 Background="SandyBrown"
                 Content="Списко Читателей"
                 Click="CustList_Click" Margin="125,67,101,301"/>
