@@ -57,18 +57,18 @@ namespace LibraryShiryaev2isp11_17.Windows
             editBook = book;
             txtTitle.Text = editBook.Title;
             txtPublisher.Text = editBook.Publisher;
-            txtInfo.Text = editBook.Info;
+            txtInfo.Text = editBook.ShortInfo;
             txtDate.Text = editBook.DateOfPublication.ToString();
-            txtInuse.Text = editBook.BookInUse.ToString();
-            
+           
+
             isEdit = true;
-            
+
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-           
-            
+
+
             if (string.IsNullOrWhiteSpace(txtTitle.Text))
             {
                 MessageBox.Show("Поле Title не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -89,12 +89,8 @@ namespace LibraryShiryaev2isp11_17.Windows
                 MessageBox.Show("Поле Publisher не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtInuse.Text))
-            {
-                MessageBox.Show("Поле InUse не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-           
+            
+
             if (txtDate.Text.Length > 100)
             {
                 MessageBox.Show("Недоступное кол-во символов1", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -105,17 +101,13 @@ namespace LibraryShiryaev2isp11_17.Windows
                 MessageBox.Show("Недоступное кол-во символов2", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (txtInuse.Text.Length > 5)
-            {
-                MessageBox.Show("Недоступное кол-во символов3", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+           
             if (txtPublisher.Text.Length > 30)
             {
                 MessageBox.Show("Недоступное кол-во символов4", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            
+
             if (txtTitle.Text.Length > 100)
             {
                 MessageBox.Show("Недоступное кол-во символов5", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -126,12 +118,12 @@ namespace LibraryShiryaev2isp11_17.Windows
             {
                 try
                 {
-                    
+
                     editBook.Title = txtTitle.Text;
-                    editBook.Info = txtInfo.Text;
+                    editBook.ShortInfo = txtInfo.Text;
                     editBook.DateOfPublication = DateTime.Parse(txtDate.Text);
                     editBook.Publisher = txtPublisher.Text;
-                    editBook.BookInUse = bool.Parse(txtInuse.Text);
+                   
                     AppData.Context.SaveChanges();
                     MessageBox.Show("Успех", " Книга изменена", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
@@ -158,12 +150,12 @@ namespace LibraryShiryaev2isp11_17.Windows
                     if (resultClick == MessageBoxResult.Yes)
                     {
                         EF.Book newBook = new EF.Book();
-                        
+
                         newBook.Title = txtTitle.Text;
-                        newBook.Info = txtInfo.Text;
+                        newBook.ShortInfo = txtInfo.Text;
                         newBook.DateOfPublication = DateTime.Parse(txtDate.Text);
                         newBook.Publisher = txtPublisher.Text;
-                        newBook.BookInUse = bool.Parse(txtInuse.Text);
+                        
                         if (pathPhoto2 != null)
                         {
                             newBook.Image = File.ReadAllBytes(pathPhoto2);
@@ -171,7 +163,7 @@ namespace LibraryShiryaev2isp11_17.Windows
                         AppData.Context.Book.Add(newBook);
                         AppData.Context.SaveChanges();
                         MessageBox.Show("Книга добавлена ", " Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                        
+
                         this.Close();
 
                     }
@@ -182,9 +174,9 @@ namespace LibraryShiryaev2isp11_17.Windows
                 }
             }
 
-            
+
         }
-        
+
 
         private void btnChoosePhoto_Click_1(object sender, RoutedEventArgs e)
         {
@@ -195,7 +187,7 @@ namespace LibraryShiryaev2isp11_17.Windows
 
                 pathPhoto2 = openFileDialog.FileName;
             }
-           
+
         }
     }
 }

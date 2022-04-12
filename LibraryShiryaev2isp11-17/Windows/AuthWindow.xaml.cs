@@ -37,7 +37,7 @@ namespace LibraryShiryaev2isp11_17.Windows
             }
             else
             {
-                MessageBox.Show("Ne naideno usera");
+                MessageBox.Show("Пользователя не найдено");
             }
         }
     }

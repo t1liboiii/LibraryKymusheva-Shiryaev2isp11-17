@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Background="Bisque"
-        Title="UserListWindow" Height="450" Width="900">
+
+        Title="Список читателей" Height="450" Width="900">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -65,6 +65,12 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/LibraryShiryaev2isp11-17;component/Images/1613069120_26-p-fon-rizhii-gradient-31.png">
+
+        </ImageBrush>
+    </Window.Background>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -163,21 +169,21 @@ Grid.Row="3">
                            Grid.Row="0"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           Margin="10 11 10 -5"/>
+                           Margin="0 0 0 0"/>
 
                             <TextBlock Text="{Binding Path=FirstName}"
                            Grid.Column="2"
                            Grid.Row="1"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           Margin="10 11 10 -5"/>
+                           Margin="0 0 0 0"/>
 
                             <TextBlock Text="{Binding Path=Phone}"
                            Grid.Column="2"
                            Grid.Row="2"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                          Margin="10 11 0 -5"/>
+                          Margin="0 0 0 0"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

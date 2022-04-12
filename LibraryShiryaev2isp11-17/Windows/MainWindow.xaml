@@ -6,8 +6,13 @@
         xmlns:local="clr-namespace:LibraryShiryaev2isp11_17"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Background="Bisque"
-        Title="MainWindow" Height="450" Width="800">
+
+        Title="Основное окно" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="/LibraryShiryaev2isp11-17;component/Images/1613036057_146-p-oranzhevii-gradientnii-fon-187.jpg">
+
+        </ImageBrush>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

@@ -5,9 +5,9 @@ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
 mc:Ignorable="d"
-Background="Bisque"
+
 WindowStartupLocation="CenterScreen"
-Title="AddClient" Height="450" Width="600">
+Title="Добавление Клиента" Height="450" Width="600">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -102,6 +102,11 @@ Title="AddClient" Height="450" Width="600">
             </Setter>
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/LibraryShiryaev2isp11-17;component/Images/1612579492_150-p-fon-dlya-prezentatsii-oranzhevii-s-zelenim-208.jpg">
+
+        </ImageBrush>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -154,6 +159,7 @@ Margin="0 0 10 0"/>
         <TextBox x:Name="txtLastName"
 VerticalAlignment="Center"
 HorizontalAlignment="Left"
+                 Background="Beige"
 FontSize="16"
 Grid.Row="1"
 Grid.Column="1"
@@ -164,6 +170,7 @@ Height="25"/>
 VerticalAlignment="Center"
 HorizontalAlignment="Left"
 FontSize="16"
+                 Background="Beige"
 Grid.Row="2"
 Grid.Column="1"
 Margin="10 0 0 0"
@@ -171,6 +178,7 @@ Width="250"
 Height="25" TextChanged="txtFirstName_TextChanged"/>
         <TextBox x:Name="txtPhone"
 VerticalAlignment="Center"
+                 Background="Beige"
 HorizontalAlignment="Left"
 FontSize="16"
 Grid.Row="3"
@@ -183,6 +191,7 @@ VerticalAlignment="Center"
 HorizontalAlignment="Left"
 FontSize="16"
 Grid.Row="4"
+                 Background="Beige"
 Grid.Column="1"
 Margin="10 0 0 0"
 Width="250"

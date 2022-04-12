@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
         mc:Ignorable="d"
-        Title="Library" 
+        Title="Добавление" 
         Height="450"
         Width="620"
         WindowStartupLocation="CenterScreen"
-        Background="Bisque">
+        >
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -104,6 +104,11 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/LibraryShiryaev2isp11-17;component/Images/1625207674_58-kartinkin-com-p-fon-oranzhevii-abstraktsiya-krasivie-foni-59.jpg">
+
+        </ImageBrush>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -112,8 +117,8 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            
+            
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -182,23 +187,12 @@
                    Grid.Row="4"
                    VerticalAlignment="Center"/>
 
-        <TextBlock Text="Используемость"
-                   HorizontalAlignment="Right"
-                   Margin="0 0 10 0"
-                   FontSize="20"
-                   FontFamily="Helvetica"
-                   FontStyle="Normal"
-                   FontWeight="Normal"
-                   FontStretch="Normal"
-                   Foreground="Black"
-                   Grid.Row="5"
-                   VerticalAlignment="Center"/>
-
 
         <!--Правая часть с возможностью ввода-->
         <TextBox x:Name="txtTitle"
                  HorizontalAlignment="Left"
                  Margin="10 0 0 0"
+                 Background="Beige"
                  Width="250"
                  FontFamily="Helvetica"
                  FontStyle="Normal"
@@ -217,6 +211,7 @@
                  Width="250"
                  FontFamily="Helvetica"
                  FontStyle="Normal"
+                 Background="Beige"
                  FontWeight="Normal"
                  FontStretch="Normal"
                  Foreground="#0f1419"
@@ -230,6 +225,7 @@
                  HorizontalAlignment="Left"
                  Margin="10 0 0 0"
                  Width="250"
+                 Background="Beige"
                  FontFamily="Helvetica"
                  FontStyle="Normal"
                  FontWeight="Normal"
@@ -246,6 +242,7 @@
                  Width="250"
                  FontFamily="Helvetica"
                  FontStyle="Normal"
+                 Background="Beige"
                  FontWeight="Normal"
                  FontStretch="Normal"
                  Foreground="#0f1419"
@@ -255,25 +252,8 @@
                  Height="30" 
                  />
 
-
-        <TextBox x:Name="txtInuse" 
-                 HorizontalAlignment="Left"
-                 Margin="10 0 0 0"
-                 Width="250"
-                 FontFamily="Helvetica"
-                 FontStyle="Normal"
-                 FontWeight="Normal"
-                 FontStretch="Normal"
-                 Foreground="#0f1419"
-                 VerticalContentAlignment="Center"
-                 Grid.Column="1"
-                 Grid.Row="5"
-                 Height="30" 
-                 />
-
         <Button  x:Name="btnAdd"
-                 Content="Добавить"
-                 Margin="0 0 0 0"
+                 Content="Добавить"                 Margin="0 0 0 0"
                  FontSize="25"
                  Width="200"
                  Height="40"

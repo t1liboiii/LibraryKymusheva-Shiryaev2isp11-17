@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LibraryShiryaev2isp11_17
+namespace LibraryShiryaev2isp11_17.Windows
 {
     /// <summary>
     /// Логика взаимодействия для Window1.xaml

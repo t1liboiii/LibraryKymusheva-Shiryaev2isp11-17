@@ -15,10 +15,10 @@ namespace LibraryShiryaev2isp11_17.EF
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class Entities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Entities1()
+            : base("name=Entities1")
         {
         }
     
@@ -27,14 +27,10 @@ namespace LibraryShiryaev2isp11_17.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AuthBook> AuthBook { get; set; }
-        public virtual DbSet<Author> Author { get; set; }
         public virtual DbSet<Book> Book { get; set; }
-        public virtual DbSet<BookInUse> BookInUse { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Employe> Employe { get; set; }
         public virtual DbSet<GiveBook> GiveBook { get; set; }
-        public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

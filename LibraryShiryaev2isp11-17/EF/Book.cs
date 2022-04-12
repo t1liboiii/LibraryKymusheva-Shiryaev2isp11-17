@@ -17,7 +17,7 @@ namespace LibraryShiryaev2isp11_17.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Book()
         {
-            this.BookInUse1 = new HashSet<BookInUse>();
+            this.GiveBook = new HashSet<GiveBook>();
         }
     
         public int BookID { get; set; }
@@ -25,11 +25,11 @@ namespace LibraryShiryaev2isp11_17.EF
         public string Info { get; set; }
         public System.DateTime DateOfPublication { get; set; }
         public string Publisher { get; set; }
-        public bool BookInUse { get; set; }
         public byte[] Image { get; set; }
         public string ShortInfo { get; set; }
+        public Nullable<decimal> Cost { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BookInUse> BookInUse1 { get; set; }
+        public virtual ICollection<GiveBook> GiveBook { get; set; }
     }
 }

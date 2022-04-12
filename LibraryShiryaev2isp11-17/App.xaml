@@ -138,8 +138,8 @@
                                                 <TranslateTransform X="0.02" Y="0.3"/>
                                             </TransformGroup>
                                         </RadialGradientBrush.RelativeTransform>
-                                        <GradientStop Offset="1" Color="ForestGreen"/>
-                                        <GradientStop Offset="0.3" Color="LightGreen">
+                                        <GradientStop Offset="1" Color="Beige"/>
+                                        <GradientStop Offset="0.3" Color="White">
                                             
                                         </GradientStop>
                                     </RadialGradientBrush>

@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
         mc:Ignorable="d"
-        Title="GiveBookWindow" 
+        Title="Выдача книги" 
         Height="600"
-        Background="Bisque"
+        WindowStartupLocation="CenterScreen"
         Width="1000">
+    <Window.Background>
+        <ImageBrush ImageSource="/LibraryShiryaev2isp11-17;component/Images/1613035923_29-p-oranzhevii-gradientnii-fon-33.jpg">
+
+        </ImageBrush>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -43,6 +48,7 @@
                        Foreground="Black"/>
 
             <TextBox x:Name="txtSearch"
+                     Background="Beige"
                      Width="150"
                      FontSize="18"
                      TextChanged="txtSearch_TextChanged"
@@ -85,9 +91,9 @@
         </WrapPanel>
 
         <ListView x:Name="GiveList"
-                  Grid.Row="3"
-                  KeyUp="listRentBook_KeyUp"
-                  MouseDoubleClick="listRentBook_MouseDoubleClick">
+                 Grid.Row="3"
+                 KeyUp="listRentBook_KeyUp"
+                 MouseDoubleClick="listRentBook_MouseDoubleClick">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Background="#1da1f2"
@@ -103,18 +109,6 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Image x:Name="photoUser"
-                       Margin="5" 
-                       Grid.RowSpan="3">
-                                <Image.Source>
-                                    <Binding Path ="Image">
-                                        <Binding.TargetNullValue>
-                                            <ImageSource>/LibraryShiryaev2isp11-17;component/Images/DefaultUser.png</ImageSource>
-                                        </Binding.TargetNullValue>
-                                    </Binding>
-                                </Image.Source>
-                            </Image>
-
                             <StackPanel Grid.Column="1"
                                         Margin="0 10 10 0">
                                 <TextBlock Margin="0 0 0 5"
@@ -148,39 +142,39 @@
 
                             <StackPanel Grid.Column="2"
                                         Margin="10 10 0 0">
-                                <TextBlock 
+                                <TextBlock Margin="0 0 0 5"
                                            Text="{Binding Path=Customer.LastName}"
                                            HorizontalAlignment="Left"
                                            FontFamily="Helvetica"
                                            Foreground="#ffffff"
                                            FontSize="12"/>
 
-                                <TextBlock Margin="0 -10 0 0"
+                                <TextBlock Margin="0 0 0 5"
                                            Text="{Binding Path=Customer.FirstName}"
                                            HorizontalAlignment="Left"
                                            FontFamily="Helvetica"
                                            Foreground="#ffffff"
                                            FontSize="12"/>
 
-                                <TextBlock Margin="0 -10 0 0 "
+                                <TextBlock Margin="0 0 0 5"
                                            Text="{Binding Path=Book.Title}"
                                            HorizontalAlignment="Left"
                                            FontFamily="Helvetica"
                                            Foreground="#ffffff"
                                            FontSize="12"/>
 
-                                <TextBlock 
-                                           Text="{Binding Path=Debt}"
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=DebtRatio}"
                                            HorizontalAlignment="Left"
                                            FontFamily="Helvetica"
-                                          
                                            FontSize="12"
+                                           Foreground="White"
                                            x:Name="tbDebtRatio"/>
                             </StackPanel>
 
                             <StackPanel Grid.Column="3"
                                         Margin="0 10 10 0">
-                                <TextBlock 
+                                <TextBlock Margin="0 0 0 5"
                                            Text="Дата когда взял книгу"
                                            HorizontalAlignment="Right"
                                            FontFamily="Helvetica"
@@ -212,30 +206,28 @@
 
                             <StackPanel Grid.Column="4"
                                         Margin="10 10 0 0">
-                                <TextBlock 
-                                          
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=DateEnd}"
                                            HorizontalAlignment="Left"
                                            FontFamily="Helvetica"
                                            Foreground="#ffffff"
-                                           FontSize="12"
-                                           Text="{Binding Path=DateStart,StringFormat='{}{0:dd-MM-yyyy}'}"/>
+                                           FontSize="12"/>
 
-                                <TextBlock 
-                                           
+                                <TextBlock Margin="0 0 0 5"
+                                           Text="{Binding Path=DateStart}"
                                            HorizontalAlignment="Left"
                                            FontFamily="Helvetica"
                                            Foreground="#ffffff"
-                                           FontSize="12"
-                                    Text="{Binding Path=DateEnd,StringFormat='{}{0:dd-MM-yyyy}'}"/>
+                                           FontSize="12"/>
 
-                                <TextBlock Margin="0 5 0 10"
+                                <TextBlock Margin="0 0 0 5"
                                            Text="{Binding Path=Employe.LastName}"
                                            HorizontalAlignment="Left"
                                            FontFamily="Helvetica"
                                            Foreground="#ffffff"
                                            FontSize="12"/>
 
-                                <TextBlock Margin="0 -5 0 10"
+                                <TextBlock Margin="0 0 0 5"
                                            Text="{Binding Path=Employe.FirstName}"
                                            HorizontalAlignment="Left"
                                            FontFamily="Helvetica"
@@ -255,7 +247,7 @@
                 Width="100"
                 Height="30"
                 FontFamily="Helvetica"
-                Foreground="#ffffff"
+                Foreground="Black"
                 HorizontalAlignment="Left"
                 Margin="10 0 0 0"
                 FontSize="20"
@@ -269,7 +261,7 @@
                  Width="100"
                  Height="30"
                  FontFamily="Helvetica"
-                 Foreground="#ffffff"
+                 Foreground="Black"
                  Style="{DynamicResource RoundCorner3}"
                  Grid.Row="4"
                  Click="btnAddRentBook_Click"/>

@@ -4,58 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище LibraryShiryaev2ISP1117Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AuthBook">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="BookID" Type="int" />
-          <Property Name="AuthorID" Type="int" />
-        </EntityType>
-        <EntityType Name="Author">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
-          <Property Name="Birthday" Type="date" Nullable="false" />
-        </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "LibraryShiryaev2isp11-17.dbo.AuthSubj" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-        <EntityType Name="AuthSubj">
-          <Key>
-            <PropertyRef Name="AuthorID" />
-            <PropertyRef Name="SubjectID" />
-          </Key>
-          <Property Name="AuthorID" Type="int" Nullable="false" />
-          <Property Name="SubjectID" Type="int" Nullable="false" />
-        </EntityType>
+    <Schema Namespace="Хранилище LibrarySModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="BookID" />
           </Key>
-          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Info" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Info" Type="nvarchar(max)" />
           <Property Name="DateOfPublication" Type="date" Nullable="false" />
           <Property Name="Publisher" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="BookInUse" Type="bit" Nullable="false" />
           <Property Name="Image" Type="varbinary(max)" />
           <Property Name="ShortInfo" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="BookInUse">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="BookID" Type="int" Nullable="false" />
-          <Property Name="CustID" Type="int" Nullable="false" />
-          <Property Name="DateOfIssue" Type="date" Nullable="false" />
-          <Property Name="EmployeID" Type="int" />
-          <Property Name="DateReturn" Type="date" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -80,7 +41,7 @@
           <Property Name="Phone" Type="nchar" MaxLength="13" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="GiveBook">
           <Key>
@@ -91,15 +52,8 @@
           <Property Name="BookID" Type="int" Nullable="false" />
           <Property Name="DateStart" Type="date" Nullable="false" />
           <Property Name="DateEnd" Type="date" Nullable="false" />
-          <Property Name="EmployeID" Type="int" />
-          <Property Name="DebtRatio" Type="float" />
-        </EntityType>
-        <EntityType Name="Subject">
-          <Key>
-            <PropertyRef Name="SubjectID" />
-          </Key>
-          <Property Name="SubjectID" Type="int" Nullable="false" />
-          <Property Name="Subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeID" Type="int" Nullable="false" />
+          <Property Name="DebtRatio" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -111,74 +65,38 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_AuthBook_Author">
-          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
-          <End Role="AuthBook" Type="Self.AuthBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Author">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AuthBook">
-              <PropertyRef Name="AuthorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AuthSubj_Author">
-          <End Role="Author" Type="Self.Author" Multiplicity="1" />
-          <End Role="AuthSubj" Type="Self.AuthSubj" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Author">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AuthSubj">
-              <PropertyRef Name="AuthorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AuthSubj_Subject">
-          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
-          <End Role="AuthSubj" Type="Self.AuthSubj" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subject">
-              <PropertyRef Name="SubjectID" />
-            </Principal>
-            <Dependent Role="AuthSubj">
-              <PropertyRef Name="SubjectID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BookInUse_Book">
+        <Association Name="FK_GiveBook_Book">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
-          <End Role="BookInUse" Type="Self.BookInUse" Multiplicity="*" />
+          <End Role="GiveBook" Type="Self.GiveBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Book">
               <PropertyRef Name="BookID" />
             </Principal>
-            <Dependent Role="BookInUse">
+            <Dependent Role="GiveBook">
               <PropertyRef Name="BookID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BookInUse_Customer">
+        <Association Name="FK_GiveBook_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="BookInUse" Type="Self.BookInUse" Multiplicity="*" />
+          <End Role="GiveBook" Type="Self.GiveBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="CustID" />
             </Principal>
-            <Dependent Role="BookInUse">
-              <PropertyRef Name="CustID" />
+            <Dependent Role="GiveBook">
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BookInUse_Employe">
-          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
-          <End Role="BookInUse" Type="Self.BookInUse" Multiplicity="*" />
+        <Association Name="FK_GiveBook_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="1" />
+          <End Role="GiveBook" Type="Self.GiveBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employe">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="BookInUse">
+            <Dependent Role="GiveBook">
               <PropertyRef Name="EmployeID" />
             </Dependent>
           </ReferentialConstraint>
@@ -214,52 +132,30 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="Хранилище LibraryShiryaev2ISP1117ModelContainer">
-          <EntitySet Name="AuthBook" EntityType="Self.AuthBook" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="Хранилище LibrarySModelContainer">
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BookInUse" EntityType="Self.BookInUse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiveBook" EntityType="Self.GiveBook" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AuthSubj" EntityType="Self.AuthSubj" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AuthSubj].[AuthorID] AS [AuthorID], 
-    [AuthSubj].[SubjectID] AS [SubjectID]
-    FROM [dbo].[AuthSubj] AS [AuthSubj]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_AuthBook_Author" Association="Self.FK_AuthBook_Author">
-            <End Role="Author" EntitySet="Author" />
-            <End Role="AuthBook" EntitySet="AuthBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AuthSubj_Author" Association="Self.FK_AuthSubj_Author">
-            <End Role="Author" EntitySet="Author" />
-            <End Role="AuthSubj" EntitySet="AuthSubj" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AuthSubj_Subject" Association="Self.FK_AuthSubj_Subject">
-            <End Role="Subject" EntitySet="Subject" />
-            <End Role="AuthSubj" EntitySet="AuthSubj" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookInUse_Book" Association="Self.FK_BookInUse_Book">
+          <AssociationSet Name="FK_GiveBook_Book" Association="Self.FK_GiveBook_Book">
             <End Role="Book" EntitySet="Book" />
-            <End Role="BookInUse" EntitySet="BookInUse" />
+            <End Role="GiveBook" EntitySet="GiveBook" />
           </AssociationSet>
-          <AssociationSet Name="FK_BookInUse_Customer" Association="Self.FK_BookInUse_Customer">
+          <AssociationSet Name="FK_GiveBook_Customer" Association="Self.FK_GiveBook_Customer">
             <End Role="Customer" EntitySet="Customer" />
-            <End Role="BookInUse" EntitySet="BookInUse" />
+            <End Role="GiveBook" EntitySet="GiveBook" />
           </AssociationSet>
-          <AssociationSet Name="FK_BookInUse_Employe" Association="Self.FK_BookInUse_Employe">
+          <AssociationSet Name="FK_GiveBook_Employe" Association="Self.FK_GiveBook_Employe">
             <End Role="Employe" EntitySet="Employe" />
-            <End Role="BookInUse" EntitySet="BookInUse" />
+            <End Role="GiveBook" EntitySet="GiveBook" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="LibraryShiryaev2ISP1117Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="LibrarySModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -276,11 +172,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(LibraryShiryaev2ISP1117Model.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(LibrarySModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(LibraryShiryaev2ISP1117Model.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(LibrarySModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -290,34 +186,22 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="AuthBook" EntityType="LibraryShiryaev2ISP1117Model.AuthBook" />
-          <EntitySet Name="Author" EntityType="LibraryShiryaev2ISP1117Model.Author" />
-          <EntitySet Name="Book" EntityType="LibraryShiryaev2ISP1117Model.Book" />
-          <EntitySet Name="BookInUse" EntityType="LibraryShiryaev2ISP1117Model.BookInUse" />
-          <EntitySet Name="Customer" EntityType="LibraryShiryaev2ISP1117Model.Customer" />
-          <EntitySet Name="Employe" EntityType="LibraryShiryaev2ISP1117Model.Employe" />
-          <EntitySet Name="GiveBook" EntityType="LibraryShiryaev2ISP1117Model.GiveBook" />
-          <EntitySet Name="Subject" EntityType="LibraryShiryaev2ISP1117Model.Subject" />
-          <EntitySet Name="sysdiagrams" EntityType="LibraryShiryaev2ISP1117Model.sysdiagrams" />
-          <AssociationSet Name="FK_AuthBook_Author" Association="LibraryShiryaev2ISP1117Model.FK_AuthBook_Author">
-            <End Role="Author" EntitySet="Author" />
-            <End Role="AuthBook" EntitySet="AuthBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookInUse_Book" Association="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book">
+          <EntitySet Name="Book" EntityType="LibrarySModel.Book" />
+          <EntitySet Name="Customer" EntityType="LibrarySModel.Customer" />
+          <EntitySet Name="Employe" EntityType="LibrarySModel.Employe" />
+          <EntitySet Name="GiveBook" EntityType="LibrarySModel.GiveBook" />
+          <EntitySet Name="sysdiagrams" EntityType="LibrarySModel.sysdiagrams" />
+          <AssociationSet Name="FK_GiveBook_Book" Association="LibrarySModel.FK_GiveBook_Book">
             <End Role="Book" EntitySet="Book" />
-            <End Role="BookInUse" EntitySet="BookInUse" />
+            <End Role="GiveBook" EntitySet="GiveBook" />
           </AssociationSet>
-          <AssociationSet Name="FK_BookInUse_Customer" Association="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer">
+          <AssociationSet Name="FK_GiveBook_Customer" Association="LibrarySModel.FK_GiveBook_Customer">
             <End Role="Customer" EntitySet="Customer" />
-            <End Role="BookInUse" EntitySet="BookInUse" />
+            <End Role="GiveBook" EntitySet="GiveBook" />
           </AssociationSet>
-          <AssociationSet Name="FK_BookInUse_Employe" Association="LibraryShiryaev2ISP1117Model.FK_BookInUse_Employe">
+          <AssociationSet Name="FK_GiveBook_Employe" Association="LibrarySModel.FK_GiveBook_Employe">
             <End Role="Employe" EntitySet="Employe" />
-            <End Role="BookInUse" EntitySet="BookInUse" />
-          </AssociationSet>
-          <AssociationSet Name="AuthSubj" Association="LibraryShiryaev2ISP1117Model.AuthSubj">
-            <End Role="Author" EntitySet="Author" />
-            <End Role="Subject" EntitySet="Subject" />
+            <End Role="GiveBook" EntitySet="GiveBook" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -331,54 +215,19 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="AuthBook">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="BookID" Type="Int32" />
-          <Property Name="AuthorID" Type="Int32" />
-          <NavigationProperty Name="Author" Relationship="LibraryShiryaev2ISP1117Model.FK_AuthBook_Author" FromRole="AuthBook" ToRole="Author" />
-        </EntityType>
-        <EntityType Name="Author">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="AuthBook" Relationship="LibraryShiryaev2ISP1117Model.FK_AuthBook_Author" FromRole="Author" ToRole="AuthBook" />
-          <NavigationProperty Name="Subject" Relationship="LibraryShiryaev2ISP1117Model.AuthSubj" FromRole="Author" ToRole="Subject" />
-        </EntityType>
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="BookID" />
           </Key>
-          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Info" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateOfPublication" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Publisher" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BookInUse" Type="Boolean" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ShortInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BookInUse1" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book" FromRole="Book" ToRole="BookInUse" />
-        </EntityType>
-        <EntityType Name="BookInUse">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="BookID" Type="Int32" Nullable="false" />
-          <Property Name="CustID" Type="Int32" Nullable="false" />
-          <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="EmployeID" Type="Int32" />
-          <Property Name="DateReturn" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Book" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Book" FromRole="BookInUse" ToRole="Book" />
-          <NavigationProperty Name="Customer" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer" FromRole="BookInUse" ToRole="Customer" />
-          <NavigationProperty Name="Employe" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Employe" FromRole="BookInUse" ToRole="Employe" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="GiveBook" Relationship="LibrarySModel.FK_GiveBook_Book" FromRole="Book" ToRole="GiveBook" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -392,7 +241,7 @@
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="BookInUse" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Customer" FromRole="Customer" ToRole="BookInUse" />
+          <NavigationProperty Name="GiveBook" Relationship="LibrarySModel.FK_GiveBook_Customer" FromRole="Customer" ToRole="GiveBook" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
@@ -404,8 +253,8 @@
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="13" FixedLength="true" Unicode="true" />
           <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BookInUse" Relationship="LibraryShiryaev2ISP1117Model.FK_BookInUse_Employe" FromRole="Employe" ToRole="BookInUse" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GiveBook" Relationship="LibrarySModel.FK_GiveBook_Employe" FromRole="Employe" ToRole="GiveBook" />
         </EntityType>
         <EntityType Name="GiveBook">
           <Key>
@@ -416,16 +265,11 @@
           <Property Name="BookID" Type="Int32" Nullable="false" />
           <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="EmployeID" Type="Int32" />
-          <Property Name="DebtRatio" Type="Double" />
-        </EntityType>
-        <EntityType Name="Subject">
-          <Key>
-            <PropertyRef Name="SubjectID" />
-          </Key>
-          <Property Name="SubjectID" Type="Int32" Nullable="false" />
-          <Property Name="Subject1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Author" Relationship="LibraryShiryaev2ISP1117Model.AuthSubj" FromRole="Subject" ToRole="Author" />
+          <Property Name="EmployeID" Type="Int32" Nullable="false" />
+          <Property Name="DebtRatio" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Book" Relationship="LibrarySModel.FK_GiveBook_Book" FromRole="GiveBook" ToRole="Book" />
+          <NavigationProperty Name="Customer" Relationship="LibrarySModel.FK_GiveBook_Customer" FromRole="GiveBook" ToRole="Customer" />
+          <NavigationProperty Name="Employe" Relationship="LibrarySModel.FK_GiveBook_Employe" FromRole="GiveBook" ToRole="Employe" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -437,78 +281,62 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_AuthBook_Author">
-          <End Type="LibraryShiryaev2ISP1117Model.Author" Role="Author" Multiplicity="0..1" />
-          <End Type="LibraryShiryaev2ISP1117Model.AuthBook" Role="AuthBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Author">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AuthBook">
-              <PropertyRef Name="AuthorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BookInUse_Book">
-          <End Type="LibraryShiryaev2ISP1117Model.Book" Role="Book" Multiplicity="1" />
-          <End Type="LibraryShiryaev2ISP1117Model.BookInUse" Role="BookInUse" Multiplicity="*" />
+        <Association Name="FK_GiveBook_Book">
+          <End Type="LibrarySModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="LibrarySModel.GiveBook" Role="GiveBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Book">
               <PropertyRef Name="BookID" />
             </Principal>
-            <Dependent Role="BookInUse">
+            <Dependent Role="GiveBook">
               <PropertyRef Name="BookID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BookInUse_Customer">
-          <End Type="LibraryShiryaev2ISP1117Model.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="LibraryShiryaev2ISP1117Model.BookInUse" Role="BookInUse" Multiplicity="*" />
+        <Association Name="FK_GiveBook_Customer">
+          <End Type="LibrarySModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="LibrarySModel.GiveBook" Role="GiveBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="CustID" />
             </Principal>
-            <Dependent Role="BookInUse">
-              <PropertyRef Name="CustID" />
+            <Dependent Role="GiveBook">
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BookInUse_Employe">
-          <End Type="LibraryShiryaev2ISP1117Model.Employe" Role="Employe" Multiplicity="0..1" />
-          <End Type="LibraryShiryaev2ISP1117Model.BookInUse" Role="BookInUse" Multiplicity="*" />
+        <Association Name="FK_GiveBook_Employe">
+          <End Type="LibrarySModel.Employe" Role="Employe" Multiplicity="1" />
+          <End Type="LibrarySModel.GiveBook" Role="GiveBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employe">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="BookInUse">
+            <Dependent Role="GiveBook">
               <PropertyRef Name="EmployeID" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="AuthSubj">
-          <End Type="LibraryShiryaev2ISP1117Model.Author" Role="Author" Multiplicity="*" />
-          <End Type="LibraryShiryaev2ISP1117Model.Subject" Role="Subject" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище LibraryShiryaev2ISP1117ModelContainer" CdmEntityContainer="Entities">
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище LibraryShiryaev2ISP1117Model.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище LibraryShiryaev2ISP1117Model.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище LibraryShiryaev2ISP1117Model.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище LibraryShiryaev2ISP1117Model.sp_helpdiagramdefinition">
+        <EntityContainerMapping StorageEntityContainer="Хранилище LibrarySModelContainer" CdmEntityContainer="Entities1">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище LibrarySModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище LibrarySModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище LibrarySModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище LibrarySModel.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="LibraryShiryaev2ISP1117Model.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="LibrarySModel.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище LibraryShiryaev2ISP1117Model.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище LibrarySModel.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="LibraryShiryaev2ISP1117Model.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="LibrarySModel.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -517,34 +345,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище LibraryShiryaev2ISP1117Model.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище LibraryShiryaev2ISP1117Model.sp_upgraddiagrams" />
-          <EntitySetMapping Name="AuthBook">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.AuthBook">
-              <MappingFragment StoreEntitySet="AuthBook">
-                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
-                <ScalarProperty Name="BookID" ColumnName="BookID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Author">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Author">
-              <MappingFragment StoreEntitySet="Author">
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище LibrarySModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище LibrarySModel.sp_upgraddiagrams" />
           <EntitySetMapping Name="Book">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Book">
+            <EntityTypeMapping TypeName="LibrarySModel.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="ShortInfo" ColumnName="ShortInfo" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="BookInUse" ColumnName="BookInUse" />
                 <ScalarProperty Name="Publisher" ColumnName="Publisher" />
                 <ScalarProperty Name="DateOfPublication" ColumnName="DateOfPublication" />
                 <ScalarProperty Name="Info" ColumnName="Info" />
@@ -553,20 +361,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BookInUse">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.BookInUse">
-              <MappingFragment StoreEntitySet="BookInUse">
-                <ScalarProperty Name="DateReturn" ColumnName="DateReturn" />
-                <ScalarProperty Name="EmployeID" ColumnName="EmployeID" />
-                <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
-                <ScalarProperty Name="CustID" ColumnName="CustID" />
-                <ScalarProperty Name="BookID" ColumnName="BookID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Customer">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Customer">
+            <EntityTypeMapping TypeName="LibrarySModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
@@ -580,7 +376,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employe">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Employe">
+            <EntityTypeMapping TypeName="LibrarySModel.Employe">
               <MappingFragment StoreEntitySet="Employe">
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -593,7 +389,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiveBook">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.GiveBook">
+            <EntityTypeMapping TypeName="LibrarySModel.GiveBook">
               <MappingFragment StoreEntitySet="GiveBook">
                 <ScalarProperty Name="DebtRatio" ColumnName="DebtRatio" />
                 <ScalarProperty Name="EmployeID" ColumnName="EmployeID" />
@@ -604,16 +400,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Subject">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.Subject">
-              <MappingFragment StoreEntitySet="Subject">
-                <ScalarProperty Name="Subject1" ColumnName="Subject" />
-                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="LibraryShiryaev2ISP1117Model.sysdiagrams">
+            <EntityTypeMapping TypeName="LibrarySModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="definition" ColumnName="definition" />
                 <ScalarProperty Name="version" ColumnName="version" />
@@ -623,14 +411,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AuthSubj" TypeName="LibraryShiryaev2ISP1117Model.AuthSubj" StoreEntitySet="AuthSubj">
-            <EndProperty Name="Subject">
-              <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
-            </EndProperty>
-            <EndProperty Name="Author">
-              <ScalarProperty Name="ID" ColumnName="AuthorID" />
-            </EndProperty>
-          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -8,6 +8,6 @@ namespace LibraryShiryaev2isp11_17.ClassHelper
 {
     class AppData
     {
-        public static EF.Entities Context { get; } = new EF.Entities();
+        public static EF.Entities1 Context { get; } = new EF.Entities1();
     }
 }

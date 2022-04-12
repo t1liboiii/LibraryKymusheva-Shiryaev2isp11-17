@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:LibraryShiryaev2isp11_17.Windows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Background="Bisque"
-        Title="BookListWindow" Height="450" Width="800">
+
+        Title="Список книг" Height="450" Width="800">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -65,6 +65,11 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/LibraryShiryaev2isp11-17;component/Images/1613021961_42-p-gradient-oranzhevii-fon-49.jpg">
+
+        </ImageBrush>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="49*"/>
@@ -142,6 +147,7 @@ Grid.Row="3" Grid.ColumnSpan="2">
                                 </Image.Source>
                             </Image>
 
+                            
 
                             <TextBlock Text="Название"
                            Grid.Column="1"
@@ -170,21 +176,22 @@ Grid.Row="3" Grid.ColumnSpan="2">
                            Grid.Row="0"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           Margin="10 8 -10 8"/>
+                           Margin="0 0 0 0 "/>
 
                             <TextBlock Text="{Binding Path=ShortInfo}"
                            Grid.Column="2"
                            Grid.Row="1"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           Margin="10 11 -150 8"/>
+                           Margin="0 0 -200 0 "/>
 
                             <TextBlock Text="{Binding Path=Publisher}"
                            Grid.Column="2"
                            Grid.Row="2"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                          Margin="0 -30 0 -12"/>
+                          Margin="0 0 0 0 "/>
+
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -198,6 +205,7 @@ Margin="20 0 10 0"
 FontSize="18"/>
             <TextBox x:Name="txtSearch"
 Width="150"
+                     Background="Beige"
 FontSize="18"
 TextChanged="txtSearch_TextChanged"/>
             <ComboBox x:Name="cmbSort"
