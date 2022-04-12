@@ -18,7 +18,7 @@
 Список читателей: ![image](https://user-images.githubusercontent.com/82766372/163042695-9cfa7536-9a82-4613-9f23-3e21c112003b.png)
 
 На этих страницах присутствует фильтр имён/названий, и сортировка по фамилии,имени,адресу/названию,изданию,используемости.<h1>
-<h1 align "center"> Так же на этих страницах присутсвуют кнопки, которые позволяют добавить читателя/книгу
+<h1 align "center"> Так же на этих страницах присутсвуют кнопки, которые позволяют добавить читателя/книгу/ и изображение
 
 ![image](https://user-images.githubusercontent.com/82766372/163041954-c4913296-20fb-4db0-bf81-19699ac4b5d0.png)
 
@@ -29,6 +29,16 @@
 ![image](https://user-images.githubusercontent.com/82766372/154963845-774f9af4-1564-46a2-b930-f23e06358f7a.png)
 
 ![image](https://user-images.githubusercontent.com/82766372/154963661-1519d8f6-102c-46c2-ac8d-0317e56efc45.png)<h1>
+
+<h1 align "center"> Присутствует возможность изменение пользователя/книги/инормации по поводу выдачи книги
+
+![image](https://user-images.githubusercontent.com/82766372/163043580-8ea0b5a2-d612-413d-ab00-10ff96f4663e.png)
+ 
+ ![image](https://user-images.githubusercontent.com/82766372/163043639-ff31691d-ec73-40c3-9c51-088712c52b98.png)
+
+ ![image](https://user-images.githubusercontent.com/82766372/163043686-51e79d8a-5589-4d40-a1ec-7ce3af4e8184.png)
+
+
 
 <h1 align "center"> В свою очередь удаление так же присутствует, оно срабатывает через нажатие кнопки del/backspace
 
