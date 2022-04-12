@@ -60,7 +60,7 @@
 
  <h1 align "center"> Добавлено 2 страницы добавление и списка выдачи книг<h1>
 
-![image](https://user-images.githubusercontent.com/82766372/163042894-f55f5da3-ad38-4022-89f0-a58e1706b442.png)
+![image](https://user-images.githubusercontent.com/82766372/163044307-317120bb-07ee-4867-b43d-980685fe02d0.png)
 
  ![image](https://user-images.githubusercontent.com/82766372/163042945-bf3ecb4d-4451-4517-9749-46648a746d30.png)
 
