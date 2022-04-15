@@ -1,4 +1,4 @@
-# LibraryShiryaev2isp11-17
+# LibraryKymushevaShiryaev2isp11-17
 # Описание проекта 
 <h1 align "center"> При запуске проекта мы попадаем на окно авторизации<h1>
 
